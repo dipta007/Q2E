@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="Q2E: Query-to-Event Decomposition for Zero-Shot Multilingual Video-Text Retrieval" />
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG" />
+  <meta property="og:url" content="https://dipta007.github.io/pre-seq-vtr/" />
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/images/logo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+
+  <meta name="twitter:title" content="Q2E: Query-to-Event Decomposition for Zero-Shot Multilingual Video-Text Retrieval">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="text-to-video, retrieval, video search, msrvtt, multivent">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Q2E</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.16.0/gradio.js"></script>
+</head>
+
+<style>
+  .text-with-background {
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .gif-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .gif-wrapper {
+    width: 80%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+  }
+
+  .gif-wrapper img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  .expandable-card .card-text-container {
+    max-height: 200px;
+    overflow-y: hidden;
+    position: relative;
+  }
+
+  .expandable-card.expanded .card-text-container {
+    max-height: none;
+  }
+
+  .expand-btn {
+    position: relative;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* margin-top: -20px; */
+    /* justify-content: center; */
+    color: #510c75;
+    border-color: transparent;
+  }
+
+  .expand-btn:hover {
+    background-color: rgba(200, 200, 200, 0.8);
+    text-decoration: none;
+    border-color: transparent;
+    color: #510c75;
+  }
+
+  .expand-btn:focus {
+    outline: none;
+    text-decoration: none;
+  }
+
+  .expandable-card:not(.expanded) .card-text-container:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 1));
+  }
+
+  .expandable-card:not(.expanded) .expand-btn {
+    margin-top: -40px;
+  }
+
+  .card-body {
+    padding-bottom: 5px;
+  }
+
+  .vertical-flex-layout {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .figure-img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .adjustable-font-size {
+    font-size: calc(0.5rem + 2vw);
+  }
+
+  .chat-history {
+    flex-grow: 1;
+    overflow-y: auto;
+    /* overflow-x: hidden; */
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+
+  #gradio pre {
+    background-color: transparent;
+  }
+</style>
+
+<body>
+
+  <!----------------------------------------- Title and Authors. --------------------------------------------------->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title is-bold">
+              <!-- <img id="painting_icon" width="5%" src="static/images/logo.png"> -->
+              Q<sub>2</sub>E
+            </h1>
+            <h2 class="subtitle is-3 publication-subtitle"><b><u>Q</u></b>uery-to-<b><u>E</u></b>vent Decomposition for
+              Zero-Shot Multilingual Video-Text Retrieval</h2>
+            <br>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">University of Maryland, Baltimore County<br>Submitted to ACL, 2025</span>
+              <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="#missing" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://github.com/dipta007/pre-seq-vtr" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="#missing" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-database"></i>
+                    </span>
+                    <span>Data</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="#missing" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-database"></i>
+                    </span>
+                    <span>Ablation Data</span>
+                  </a>
+                </span>
+
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="#missing" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <!-- <span class="link-block">
+                  <a href="https://huggingface.co/TIGER-Lab/VideoScore" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      🔥 
+                    </span>
+                    <span>Model</span>
+                  </a>
+                </span>
+                <br> -->
+
+                <!-- <span class="link-block">
+                  <a href="https://huggingface.co/spaces/TIGER-Lab/VideoScore-Leaderboard" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      🤗
+                    </span>
+                    <span>Leaderboard</span>
+                  </a>
+                </span> -->
+
+                <!-- <span class="link-block">
+                  <a href="https://huggingface.co/spaces/TIGER-Lab/VideoScore" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      🤗
+                    </span>
+                    <span>Space</span>
+                  </a>
+                </span> -->
+
+                <!-- <span class="link-block">
+                  <a href="https://twitter.com/DongfuJiang/status/1805438506137010326"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon has-text-white">
+                      <i class="fab fa-twitter"></i>
+                    </span>
+                    <span>Twitter</span>
+                  </a>
+                </span> -->
+
+              </div>
+            </div>
+
+            <centering>
+              <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+                <div style="flex: 1; display: flex; justify-content: center; width: 150vh;">
+                  <img src="static/images/main_1col.png">
+                </div>
+                <div style="flex: 1; display: flex; justify-content: center;">
+                  <img src="static/images/asr_pipeline.png">
+                </div>
+              </div>
+            </centering>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!----------------------------------------- Abstract. --------------------------------------------------->
+  <section class="hero is-light is-small">
+    <div class="hero-body has-text-centered">
+      <h2 class="title is-3">
+        Abstract</h2>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+
+          <div class="content has-text-justified">
+            <p>
+              Foundation models have demonstrated remarkable capabilities in performing zero-shot tasks without the need
+              for dataset-specific fine-tuning. However, due to differences in domain distributions, most text-to-video
+              retrieval systems still rely on such fine-tuning. Recent advancements in large language models (LLMs) and
+              vision-language models (VLMs) have shown impressive proficiency in understanding and applying new
+              knowledge. In this work, we present Q<sub>2</sub>E: a drop-in text-to-video retrieval method adaptable to any
+              dataset, domain, LLM, or VLM without requiring fine-tuning. Our approach leverages the embedded world
+              knowledge in LLMs and VLMs to decompose queries and generate contextualized frame captions. We also adopt
+              entropy-based fusion scoring for zero-shot fusion of multiple ranks. Through evaluations on two diverse
+              datasets and multiple retrieval metrics, we demonstrate that Q<sub>2</sub>E outperforms several state-of-the-art
+              baselines, highlighting the advantages of event-based decomposition in text-to-video retrieval systems. We
+              have open-sourced the code and data for future research.
+              </li>
+              </ol>
+            </p>
+
+            <centering>
+              <div style="text-align: center;">
+                <img id="teaser" width="70%" src="static/images/intro-full.png">
+              </div>
+            </centering>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-light is-small">
+    <div class="hero-body has-text-centered">
+      <h2 class="title is-3">
+        Results & Leaderboard</h2>
+    </div>
+  </section>
+
+  <section class="section">
+
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-12 has-text-centered">
+
+          <div class="model-labels-container is-size-5">
+            <span><b>Baseline Encoders</b>:</span>
+            <a href="https://arxiv.org/abs/2306.02329" target="_blank" style="padding: 5px 10px;">MultiCLIP (MC)</a>,
+            <a href="https://arxiv.org/abs/2403.15377v4" target="_blank" style="padding: 5px 10px;">InternVideo2-1b (IV2)</a>
+            <p></p>
+          </div>
+          <div class="model-labels-container is-size-5">
+            <span><b>Datasets</b>:</span>
+            <span style="background-color: rgba(110, 194, 134, 0.15);padding: 5px 10px;">MultiVENT</span>
+            <span style="background-color: rgba(255, 208, 80, 0.15);padding: 5px 10px;">MSR-VTT-1kA</span>
+            <p></p>
+          </div>
+
+          <table class="table is-bordered is-three-fifths">
+            <thead>
+              <tr style="background-color: rgba(211, 211, 211, 0.5);">
+                <th>Method</th>
+                <th>Pre@1 ↑</th>
+                <th>Pre@5 ↑</th>
+                <th>Pre@10 ↑</th>
+                <th>Re@1 ↑</th>
+                <th>Re@5 ↑</th>
+                <th>Re@10 ↑</th>
+                <th>MRR ↑</th>
+                <th>NDCG ↑</th>
+                <th>MAP ↑</th>
+                <th>Mean Rank ↓</th>
+                <th>Median Rank ↓</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background-color: rgba(110, 194, 134, 0.15);">
+                <td>MC</td>
+                <td><u>9.48</u></td>
+                <td><u>43.94</u></td>
+                <td><u>70.69</u></td>
+                <td><u>86.10</u></td>
+                <td><u>79.92</u></td>
+                <td><u>65.06</u></td>
+                <td><u>0.90</u></td>
+                <td><u>74.73</u></td>
+                <td><u>85.15</u></td>
+                <td><u>23.22</u></td>
+                <td><u><b>6</b></u></td>
+              </tr>
+              <tr style="background-color: rgba(110, 194, 134, 0.15);">
+                <td>IV2</td>
+                <td>5.60</td>
+                <td>28.92</td>
+                <td>49.12</td>
+                <td>51.35</td>
+                <td>53.28</td>
+                <td>45.44</td>
+                <td>0.68</td>
+                <td>50.43</td>
+                <td>63.77</td>
+                <td>235.49</td>
+                <td>11</td>
+              </tr>
+
+              <tr style="background-color: rgba(110, 194, 134, 0.15);">
+                <td>MC + Q<sub>2</sub>E</td>
+                <td>10.24</td>
+                <td>46.17</td>
+                <td>75.54</td>
+                <td>92.28</td>
+                <td>84.32</td>
+                <td>69.54</td>
+                <td>0.94</td>
+                <td>79.68</td>
+                <td>88.84</td>
+                <td>21.87</td>
+                <td><b>6</b></td>
+              </tr>
+              <tr style="background-color: rgba(110, 194, 134, 0.15);">
+                <td>MC + Q<sub>2</sub>E + ASR</td>
+                <td><b>10.37</b></td>
+                <td><b>48.42</b></td>
+                <td><b>79.06</b></td>
+                <td><b>93.44</b></td>
+                <td><b>87.80</b></td>
+                <td><b>72.66</b></td>
+                <td><b>0.95</b></td>
+                <td><b>82.89</b></td>
+                <td><b>91.10</b></td>
+                <td><b>17.14</b></td>
+                <td><b>6</b></td>
+              </tr>
+
+              
+              <tr style="background-color: rgba(110, 194, 134, 0.15);">
+                <td>IV2 + Q<sub>2</sub>E</td>
+                <td>9.54</td>
+                <td>40.88</td>
+                <td>63.40</td>
+                <td>87.26</td>
+                <td>75.21</td>
+                <td>58.73</td>
+                <td>0.92</td>
+                <td>69.15</td>
+                <td>83.96</td>
+                <td>53.84</td>
+                <td>7</td>
+              </tr>
+              <tr style="background-color: rgba(110, 194, 134, 0.15);">
+                <td>IV2 + Q<sub>2</sub>E + ASR</td>
+                <td>10.24</td>
+                <td>44.94</td>
+                <td>70.79</td>
+                <td>92.28</td>
+                <td>81.85</td>
+                <td>65.14</td>
+                <td><b>0.95</b></td>
+                <td>76.10</td>
+                <td>88.09</td>
+                <td>42.81</td>
+                <td><b>6</b></td>
+              </tr>
+              
+
+              <tr style="background-color: rgba(255, 208, 80, 0.15);">
+                <td>MC</td>
+                <td>43.92</td>
+                <td>67.94</td>
+                <td>76.88</td>
+                <td>44.02</td>
+                <td>13.63</td>
+                <td>7.71</td>
+                <td>0.54</td>
+                <td>59.79</td>
+                <td>54.38</td>
+                <td>19.92</td>
+                <td>2</td>
+              </tr>
+              <tr style="background-color: rgba(255, 208, 80, 0.15);">
+                <td>IV2</td>
+                <td><u>52.56</u></td>
+                <td><u>73.07</u></td>
+                <td><u>80.10</u></td>
+                <td><u>52.66</u></td>
+                <td><u>14.65</u></td>
+                <td><u>8.03</u></td>
+                <td><u>0.62</u></td>
+                <td><u>66.07</u></td>
+                <td><u>61.62</u></td>
+                <td><u>25.12</u></td>
+                <td><u><b>1</b></u></td>
+              </tr>
+
+              <tr style="background-color: rgba(255, 208, 80, 0.15);">
+                <td>MC + Q<sub>2</sub>E</td>
+                <td>45.03</td>
+                <td>70.05</td>
+                <td>79.10</td>
+                <td>45.13</td>
+                <td>14.05</td>
+                <td>7.93</td>
+                <td>0.56</td>
+                <td>61.57</td>
+                <td>56.02</td>
+                <td>17.88</td>
+                <td>2</td>
+              </tr>
+              <tr style="background-color: rgba(255, 208, 80, 0.15);">
+                <td>MC + Q<sub>2</sub>E + ASR</td>
+                <td>46.13</td>
+                <td>73.47</td>
+                <td>81.41</td>
+                <td>46.23</td>
+                <td>14.73</td>
+                <td>8.16</td>
+                <td>0.58</td>
+                <td>63.48</td>
+                <td>57.77</td>
+                <td>18.54</td>
+                <td>2</td>
+              </tr>
+              <tr style="background-color: rgba(255, 208, 80, 0.15);">
+                <td>IV2 + Q<sub>2</sub>E</td>
+                <td>53.47</td>
+                <td>73.57</td>
+                <td>82.11</td>
+                <td>53.57</td>
+                <td>14.75</td>
+                <td>8.23</td>
+                <td>0.62</td>
+                <td>67.16</td>
+                <td>62.47</td>
+                <td>16.73</td>
+                <td><b>1</b></td>
+              </tr>
+              <tr style="background-color: rgba(255, 208, 80, 0.15);">
+                <td>IV2 + Q<sub>2</sub>E+ ASR</td>
+                <td><b>56.28</b></td>
+                <td><b>76.58</b></td>
+                <td><b>83.72</b></td>
+                <td><b>56.38</b></td>
+                <td><b>15.36</b></td>
+                <td><b>8.39</b></td>
+                <td><b>0.65</b></td>
+                <td><b>69.53</b></td>
+                <td><b>65.06</b></td>
+                <td><b>15.85</b></td>
+                <td><b>1</b></td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="text-align:center">
+            The best score for each dataset is <b>in bold</b> and the best in baselines is <u>underlined</u>.
+            <!--"-" means the answer of MLLM is meaningless or in wrong format. -->
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="hero is-light is-small">
+    <div class="hero-body has-text-centered">
+      <h2 class="title is-3">
+        <span style="vertical-align: middle">Failure Studies</span>
+      </h2>
+    </div>
+  </section>
+
+  <!--  -->
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
+    </code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                target="_blank">Academic Project Page Template</a> which was adopted from the <a
+                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the
+              footer. <br> This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Statcounter tracking code -->
+
+  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+  <!-- End of Statcounter Code -->
+
+</body>
+
+</html>
