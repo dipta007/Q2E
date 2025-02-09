@@ -1,28 +1,32 @@
 export WANDB_MODE=disabled
 
-echo "Running evaluation on MSRVTT-1KA dataset (w/o ASR) with MultiCLIP encoder"
+echo -e "====>> Running evaluation on MSRVTT-1KA dataset (w/o ASR) with MultiCLIP encoder\n"
 uv run -m src.eval.MultiCLIP.infer \
     --note=encoder-multiclip_data_msrvtt_asr \
-    --dataset_dir=data/MSRVTT-1KA/HFdataset_event_4000_LLAMA_3.3_70B_InternVL_38B_Funiform_16_ASR \
-    --aggregation_methods=inv_entropy
+    --dataset_dir=data/MSR-VTT-1kA/HFdataset_LLAMA_3.3_70B_InternVL_38B_Funiform_16_noASR \
+    --aggregation_methods=inv_entropy \
+    --t2v_encoder=multiclip
 
 
-echo "Running evaluation on MSRVTT-1KA dataset (w/ ASR) with MultiCLIP encoder"
+echo -e "\n\n\n\n====>> Running evaluation on MSRVTT-1KA dataset (w/ ASR) with MultiCLIP encoder\n"
 uv run -m src.eval.MultiCLIP.infer \
     --note=encoder-multiclip_data_msrvtt_asr \
-    --dataset_dir=data/MSRVTT-1KA/HFdataset_event_4000_LLAMA_3.3_70B_InternVL_38B_Funiform_16_ASR \
-    --aggregation_methods=inv_entropy
+    --dataset_dir=data/MSR-VTT-1kA/HFdataset_LLAMA_3.3_70B_InternVL_38B_Funiform_16_ASR \
+    --aggregation_methods=inv_entropy \
+    --t2v_encoder=multiclip
 
 
-echo "Running evaluation on MSRVTT-1KA dataset (w/o ASR) with InternVideo2 encoder"
+echo -e "\n\n\n\n====>> Running evaluation on MSRVTT-1KA dataset (w/o ASR) with InternVideo2 encoder\n"
 uv run -m src.eval.InternVideo2.infer \
     --note=encoder-multiclip_data_msrvtt_asr \
-    --dataset_dir=data/MSRVTT-1KA/HFdataset_event_4000_LLAMA_3.3_70B_InternVL_38B_Funiform_16_ASR \
-    --aggregation_methods=inv_entropy
+    --dataset_dir=data/MSR-VTT-1kA/HFdataset_LLAMA_3.3_70B_InternVL_38B_Funiform_16_noASR \
+    --aggregation_methods=inv_entropy \
+    --t2v_encoder=internvideo2
 
 
-echo "Running evaluation on MSRVTT-1KA dataset (w/ ASR) with InternVideo2 encoder"
+echo -e "\n\n\n\n====>> Running evaluation on MSRVTT-1KA dataset (w/ ASR) with InternVideo2 encoder\n"
 uv run -m src.eval.InternVideo2.infer \
     --note=encoder-multiclip_data_msrvtt_asr \
-    --dataset_dir=data/MSRVTT-1KA/HFdataset_event_4000_LLAMA_3.3_70B_InternVL_38B_Funiform_16_ASR \
-    --aggregation_methods=inv_entropy
+    --dataset_dir=data/MSR-VTT-1kA/HFdataset_LLAMA_3.3_70B_InternVL_38B_Funiform_16_ASR \
+    --aggregation_methods=inv_entropy \
+    --t2v_encoder=internvideo2
