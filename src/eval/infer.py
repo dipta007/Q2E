@@ -214,6 +214,7 @@ def infer():
     except FileNotFoundError:
         # If not found, load from huggingface datasets
         ds = load_dataset(ARGS.dataset_path)
+        ds = ds['train']
     ARGS.num_of_frames = int(ds["num_of_frames"][0])
 
 
