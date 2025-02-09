@@ -20,6 +20,7 @@ dependencies = [
     "ragatouille>=0.0.8.post4",
     "scenedetect>=0.6.5.2",
     "setuptools>=75.8.0",
+    "torch==2.5.1",
     "torchaudio>=2.5.0",
     "torchmetrics>=1.6.1",
     "torchvision>=0.20.0",
