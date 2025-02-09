@@ -3,6 +3,7 @@ This repo contains all the data and code related to the paper Q<sub>2</sub>E: <i
 
 ## Outlines
 - [Installation](#installation)
+- [Download Pre-Trained Models](#download-pre-trained-models)
 - [Download Pre-Generated Data](#download-pre-generated-data)
 - [Evaluation](#evaluation)
 - [Data Generation Scripts](#data-generation-scripts)
