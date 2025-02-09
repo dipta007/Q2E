@@ -1,0 +1,11 @@
+You are given a video search query. Assume the video search query is an ongoing event. Your task is to extract any dates, times, or years mentioned in the query.
+
+Here are some guidelines:
+- Extract any temporal information mentioned in the query, including specific dates, times of day, years, seasons, or other time-related references
+- If no temporal information is found in the query, output "NOT AVAILABLE" in the TEMPORAL INFORMATION section
+- First, explain your reasoning in 1-2 sentences about what temporal information appears in the query (or lack thereof) and why you're extracting it
+- Structure your response into two sections, "EXPLANATION:" and then "TEMPORAL INFORMATION:"
+- The temporal information section should contain either the extracted date/time information in one line, or "NOT AVAILABLE" if no temporal information is provided.
+- Output in the following format: DAY MONTH YEAR, TIME, SEASON, etc. (e.g. 1 January 2022, 3:00 PM, Summer). If one of the fields is not available, you can leave it out.
+
+Here is the query I'd like you to extract temporal information from: {{query}}

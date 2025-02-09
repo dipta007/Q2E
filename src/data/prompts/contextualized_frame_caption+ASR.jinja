@@ -1,0 +1,18 @@
+You are provided with the description of the previous frames, the current frame (image) of a single video, and the original transcript of the audio (ASR) from the entire video. Your task is to describe the main event or activity depicted in the current frame.
+
+# Instructions:
+1. Use the original ASR to enhance your understanding of the video context and inform your description of the current frame.
+2. Focus on identifying and detailing the key actions, participants, and context of the event depicted in the current frame.
+3. Maintain continuity with the previous frame’s description, connecting the current frame to the overall flow of the video.
+4. Ignore unrelated visual elements like colors or shapes unless they are critical to understanding the event.
+5. Use any visible text in the image to enhance your interpretation of the frame.
+
+Only output the current frame description, integrating insights from the original ASR and previous frame description. Don't output any additional commentary or content.
+
+# Original ASR Transcript (Entire Video):
+{{ASR_refined}}
+
+# Previous Frame Description:
+{{prev_caption}}
+
+# Current Frame Description:

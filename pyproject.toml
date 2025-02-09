@@ -1,0 +1,40 @@
+[project]
+name = "q2e"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "accelerate>=0.26.0",
+    "beautifulsoup4>=4.13.3",
+    "ctranslate2>=4.5.0",
+    "datasets>=3.2.0",
+    "gdown>=5.2.0",
+    "gitpython>=3.1.44",
+    "ipykernel>=6.29.5",
+    "moviepy>=2.1.2",
+    "open-clip-torch==2.16.0",
+    "pandas>=2.2.3",
+    "python-box>=7.3.2",
+    "ragatouille>=0.0.8.post4",
+    "scenedetect>=0.6.5.2",
+    "setuptools>=75.8.0",
+    "torchaudio>=2.5.0",
+    "torchmetrics>=1.6.1",
+    "torchvision>=0.20.0",
+    "tqdm>=4.67.1",
+    "vllm==0.6.4.post1",
+    "wandb>=0.19.6",
+]
+
+[dependency-groups]
+dev = [
+    "gpustat>=1.1.1",
+    "ruff>=0.9.5",
+]
+
+[tool.uv.pip]
+link-mode = "copy"
+
+[tool.ruff]
+line-length = 150

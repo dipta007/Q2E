@@ -1,0 +1,10 @@
+You are given a video search query. Assume the video search query is an ongoing event. You have to decompose the ongoing event in multiple simple events. The extracted events should be concrete enough to be visualized in a video.
+
+Here are some guidelines: 
+- Extract events that could be visualized in a video.
+- Before extracting an event, consider whether the event text could serve as a reasonable caption for a frame of a video associated with the query.
+- Give specific events related to the query, use your previous WORLD KNOWLEDGE to extract events that are likely to be seen in a video. For example, if the query is "2019 Christmas Eve Protests in Hong Kong", you might return "Protesters marching in the streets", but not "Protestors marching in snow" because it is not likely to have snow in Hong Kong, though its pretty common in other places. 
+- First, explain your reasoning in 1-2 sentences about which events it makes sense to extract. Then, provide a numbered list with the events (anywhere from one to five event; use your best judgement to determine how many to extract)
+- Structure your response into two sections, ""EXPLANATION:"" and then ""EVENTS:"". The events sections should contain nothing but the events. 
+
+Here is the query I'd like you to extract events from: {{query}}

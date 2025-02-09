@@ -1,0 +1,11 @@
+You are given a video search query. Assume the video search query is an ongoing event. Your task is to extract any locations mentioned in the query.
+
+Here are some guidelines:
+- Extract any location information mentioned in the query, including specific cities, towns, countries, regions, areas, neighborhoods, or other geographical references
+- If no location information is found in the query, output "NOT AVAILABLE" in the LOCATION INFORMATION section
+- First, explain your reasoning in 1-2 sentences about what location information appears in the query (or lack thereof) and why you're extracting it
+- Structure your response into two sections, "EXPLANATION:" and then "LOCATION INFORMATION:"
+- The location information section should contain either the extracted location information in one line, or "NOT AVAILABLE" if no location information is provided.
+- Output in the following format: CITY, COUNTRY, REGION, AREA, NEIGHBORHOOD, etc. (e.g. New York, USA, Europe, Downtown). If one of the fields is not available, you can leave it out.
+
+Here is the query I'd like you to extract location information from: {{query}}

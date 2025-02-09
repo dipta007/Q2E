@@ -1,0 +1,14 @@
+You will receive a query along with optional time, location, and main event information. Your task is to integrate this information naturally into a refined, human-like search query.
+
+Here are some guidelines:
+- Take the original query and incorporate any provided time, location, and event details seamlessly
+- If any of these elements (time, location, event) are not provided, work with just the available information
+- The refined query should sound natural, as if someone is searching with that query in Google, YouTube, etc.
+- The base query information must always be preserved in the refined version
+- First, explain your reasoning in 1-2 sentences about which events it makes sense to extract. Then, provide the refine query in one line
+- Structure your response into two sections, ""EXPLANATION:"" and then ""REFINED QUERY:"". The Refined Query section should contain nothing but the refined query in one line.
+
+Base Query: {{base_query}}
+Event: {{event}}
+Place: {{place}}
+Time: {{time}}
