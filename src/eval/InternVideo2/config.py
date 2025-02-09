@@ -27,7 +27,7 @@ config = Box(
                         clip_norm_type="l2",
                         clip_return_layer=6,
                         clip_student_return_interval=1,
-                        pretrained="data/models/InternVid2/InternVideo2-stage2_1b-224p-f4.pt",
+                        pretrained="data/models/InternVideo2/InternVideo2-stage2_1b-224p-f4.pt",
                         use_checkpoint=True,
                         checkpoint_num=40,
                         use_flash_attn=False,
@@ -51,7 +51,7 @@ config = Box(
                     dict(
                         name="bert_large",
                         pretrained="bert-large-uncased",
-                        config="data/models/InternVid2/config_bert_large.json",
+                        config="src/eval/InternVideo2/config_bert_large.json",
                         d_model=1024,
                         fusion_layer=19,
                     )
@@ -118,12 +118,6 @@ config = Box(
             )
         ),
         "scheduler": Box(dict(sched="cosine", epochs=1, min_lr_multi=0.01, warmup_epochs=0.2)),
-        "pretrained_path": "data/models/InternVid2/InternVideo2-stage2_1b-224p-f4.pt",
+        "pretrained_path": "data/models/InternVideo2/InternVideo2-stage2_1b-224p-f4.pt",
     }
 )
-
-
-# ====================================
-# Aggregation method: inv_entropy, Params: ['query_vs_video']
-# R1: 7.34, R5: 21.61, R10: 30.95, Pre1: 7.34, Pre5: 4.32, Pre10: 3.11, MRR: 0.13, NDCG: 17.57, MAP: 13.48, MeanRank: 117.48, MedianRank: 37.00
-# ====================================

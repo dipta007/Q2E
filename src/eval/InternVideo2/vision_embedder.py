@@ -17,10 +17,10 @@ from torchvision.transforms import (
     Lambda,
 )
 
-from src.inference.InternVid2.model import InternVideo2_Stage2
-from src.inference.InternVid2.config import config as cfg
+from ..InternVideo2.model import InternVideo2_Stage2
+from .config import config as cfg
 
-CLIP_FRAME_DIR = "data/models/InternVid2/clip_frames"
+CLIP_FRAME_DIR = "data/models/InternVideo2/clip_frames"
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 video_path = None
@@ -134,12 +134,12 @@ def read_frames_decord(
 
 
 def get_model():
-    print("Loading InternVid2 model...")
-    tokenizer = BertTokenizer.from_pretrained(cfg.model.text_encoder.pretrained, local_files_only=True)
+    print("Loading InternVideo2 model...")
+    tokenizer = BertTokenizer.from_pretrained(cfg.model.text_encoder.pretrained, local_files_only=False)
     model = InternVideo2_Stage2(config=cfg, tokenizer=tokenizer, is_pretrain=True)
     model.eval()
     model.to(DEVICE)
-    print("InternVid2 Model loaded successfully!")
+    print("InternVideo2 Model loaded successfully!")
 
     print(f"Loading checkpoint from {cfg.pretrained_path}")
     checkpoint = torch.load(cfg.pretrained_path, map_location="cpu")

@@ -26,7 +26,7 @@ def get_asr_summary(video_id):
 
 
 def get_asr_refined(video_id):
-    transcript_dir = f"{ARGS.data_dir}/transcripts/translated"
+    transcript_dir = f"{ARGS.data_dir}/transcripts"
     transcript_file = f"{transcript_dir}/{video_id}.txt"
     try:
         with open(transcript_file, "r", encoding="utf-8") as f:
@@ -37,7 +37,7 @@ def get_asr_refined(video_id):
 
 
 def get_all_asr(video_id):
-    transcript_dir = f"{ARGS.data_dir}/transcripts/translated"
+    transcript_dir = f"{ARGS.data_dir}/transcripts"
     asr = {}
     dirs = os.listdir(transcript_dir)
     for dir in dirs:

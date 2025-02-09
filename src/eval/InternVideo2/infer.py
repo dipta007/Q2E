@@ -94,9 +94,10 @@ def get_data(ds):
                 whole_video_captions.append(row["clip2video_caption"])
             clip_captions.append(row["clip_captions"])
 
-            llm_translation_asrs.append(row["asr"]["translated_llm"])
-            whisper_translation_asrs.append(row["asr"]["translated_whisper"])
-            refined_translation_asrs.append(row["asr"]["translated"])
+            if "asr" in row:
+                llm_translation_asrs.append(row["asr"]["translated_llm"])
+                whisper_translation_asrs.append(row["asr"]["translated_whisper"])
+                refined_translation_asrs.append(row["asr"]["refined"])
 
     query_to_videoind = defaultdict(list)
     for i, row in enumerate(ds):

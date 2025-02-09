@@ -214,7 +214,7 @@ def get_score(args, text_embeddings, video_embeddings):
 def get_query_vs_video_score(args, queries, video_ids):
     global tokenizer, model, video_embeddings, video_path
 
-    cfg.max_frames = args.num_of_clips
+    cfg.max_frames = args.num_of_frames
     if cfg.max_frames == 32:
         cfg.batch_size = 64
     if cfg.max_frames == 64:

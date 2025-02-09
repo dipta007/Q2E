@@ -1,7 +1,7 @@
 import torch
 from torch import nn
-from src.inference.InternVid2.utils import build_bert
-from src.inference.InternVid2.internvid2 import pretrain_internvideo2_1b_patch14_224
+from .utils import build_bert
+from .internvid2 import pretrain_internvideo2_1b_patch14_224
 from .criterions import new_UTA_Loss, VTC_VTM_Loss, MLMLoss
 
 

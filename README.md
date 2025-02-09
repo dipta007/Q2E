@@ -17,7 +17,16 @@ uv venv
 uv sync
 ```
 
-## Download Pre-Generated Data
+## Download Pre-Trained Models
+```bash
+mkdir -p data/models/MultiCLIP
+wget -O data/models/MultiCLIP/open_clip_pytorch_model.bin https://huggingface.co/laion/CLIP-ViT-H-14-frozen-xlm-roberta-large-laion5B-s13B-b90k/resolve/main/open_clip_pytorch_model.bin
+
+mkdir -p data/models/InternVideo2
+```
+Download the InternVideo2 model from [here](https://huggingface.co/OpenGVLab/InternVideo2-Stage2_1B-224p-f4) and save it as `data/models/InternVideo2/InternVideo2-stage2_1b-224p-f4.pt`.
+
+## Download Pre-Generated Data (with **VIDEOS**)
 ```bash
 gdown {{missing}}
 unzip data.zip -d data
@@ -25,11 +34,11 @@ unzip data.zip -d data
 
 ## Evaluation
 Data is generated and already populated in the `data` directory. To generate the data, follow the instructions in the [Data Generation](#data-generation) section.
-### Evaluate [MSR-VTT-1kA](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/06/cvpr16.msr-vtt.tmei_-1.pdf)
+### [MSR-VTT-1kA](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/06/cvpr16.msr-vtt.tmei_-1.pdf)
 ```bash
 bash scripts/eval_msrvtt.sh
 ```
-### Evaluate [MultiVENT](https://proceedings.neurips.cc/paper_files/paper/2023/file/a054ff49751dbc991ec30ae479397c3d-Paper-Datasets_and_Benchmarks.pdf)
+### [MultiVENT](https://proceedings.neurips.cc/paper_files/paper/2023/file/a054ff49751dbc991ec30ae479397c3d-Paper-Datasets_and_Benchmarks.pdf)
 ```bash
 bash scripts/eval_multivent.sh 
 ```

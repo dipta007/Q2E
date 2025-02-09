@@ -212,7 +212,7 @@ class BertTokenizer(PreTrainedTokenizer):
         return len(self.vocab)
 
     def get_vocab(self):
-        self.vocab = load_vocab("data/models/InternVid2/vocab.txt")
+        self.vocab = load_vocab("src/eval/InternVideo2/bert-large-uncased-vocab.txt")
         return dict(self.vocab, **self.added_tokens_encoder)
 
     def _tokenize(self, text):
