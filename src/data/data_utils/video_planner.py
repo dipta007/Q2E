@@ -192,7 +192,7 @@ def scene_detect_sample_frames(video_id):
     return images
 
 
-def get_all_clip_captions(video_ids):
+def get_all_frame_captions(video_ids):
     template_name = "contextualized_frame_caption"
     if ARGS.with_asr:
         template_name = "contextualized_frame_caption+ASR"
@@ -200,7 +200,7 @@ def get_all_clip_captions(video_ids):
     result = {}
 
     for video_id in video_ids:
-        result[video_id] = {"clip_captions": [], "num_of_frames": 0}
+        result[video_id] = {"frame_captions": [], "num_of_frames": 0}
 
     videoID_to_frames = {}
     curr_video_ids = []
@@ -232,7 +232,7 @@ def get_all_clip_captions(video_ids):
                     if i >= len(videoID_to_frames[video_id]):  # in case of scene detect, num_of_frames can be variable
                         continue
                     frame = videoID_to_frames[video_id][i]
-                    prev_captions = result[video_id]["clip_captions"][-1:]
+                    prev_captions = result[video_id]["frame_captions"][-1:]
                     prompt = get_prompt(prev_captions, video_id, template_name)
                     curr_prompts.append({"prompt": prompt, "multi_modal_data": {"image": frame}})
 
@@ -246,14 +246,14 @@ def get_all_clip_captions(video_ids):
                 for video_id in curr_video_ids:
                     if i >= len(videoID_to_frames[video_id]):
                         continue
-                    result[video_id]["clip_captions"].append(curr_captions[j])
+                    result[video_id]["frame_captions"].append(curr_captions[j])
                     j += 1
 
             curr_video_ids = []
             videoID_to_frames = {}
 
     for video_id in result.keys():
-        result[video_id]["clip_captions"] = result[video_id]["clip_captions"][: result[video_id]["num_of_frames"]]
+        result[video_id]["frame_captions"] = result[video_id]["frame_captions"][: result[video_id]["num_of_frames"]]
     print("============ Mean Num of Clips ============")
     print(sum([result[video_id]["num_of_frames"] for video_id in result.keys()]) / len(result.keys()))
     print("=====================================")

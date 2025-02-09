@@ -10,14 +10,16 @@ from pathlib import Path
 
 import torch
 import wandb
-from datasets import load_from_disk
+from datasets import load_dataset, load_from_disk
 
 from ..evaluation import retrieval_score
 from ..fusion_score import fusion_exp_entropy, fusion_inverse_entropy, fusion_reciprocal_rank
 from ..text_embedder import get_many_to_many_score
 from ..utils import get_git_commit_hash
-from .vision_embedder import get_query_vs_video_score
+from .InternVideo2.vision_embedder import get_query_vs_video_score as get_query_vs_video_score_InternVideo2
+from .MultiCLIP.vision_embedder import get_query_vs_video_score as get_query_vs_video_score_MultiCLIP
 
+get_query_vs_video_score = None
 logging.getLogger().setLevel(logging.ERROR)
 logging.getLogger("transformers").setLevel(logging.CRITICAL)
 
@@ -28,6 +30,8 @@ def get_args():
     parser.add_argument("--dataset_dir", "-d", type=str, required=True)
     parser.add_argument("--text_emb_type", type=str, choices=["colbert", "sentence-transformers"], default="colbert")
     parser.add_argument("--text_emb_model", type=str, default="hltcoe/plaidx-large-eng-tdist-mt5xxl-engeng")
+    parser.add_argument("--t2v_encoder", type=str, choices=["multiclip", "internvideo2"], required=True)
+    parser.add_argument("--video_dir", type=str, default="")
 
     parser.add_argument("--aggregation_methods", type=str, default="")
     parser.add_argument("--softmax", type=str, default="pre", choices=["pre", "post", "none"])
@@ -42,17 +46,22 @@ def get_args():
     else:
         args.text_emb_type = "colbert"
 
+    global get_query_vs_video_score
+    if args.t2v_encoder == "MultiCLIP":
+        get_query_vs_video_score = get_query_vs_video_score_MultiCLIP
+    elif args.t2v_encoder == "InternVideo2":
+        get_query_vs_video_score = get_query_vs_video_score_InternVideo2
+    else:
+        raise ValueError(f"Invalid t2v_encoder: {args.t2v_encoder}")
+
     args.dataset_path = os.path.join(args.dataset_dir, "dataset")
 
     args.git_hash = get_git_commit_hash()
 
-    # load args from training
-    with open(f"{args.dataset_dir}/data_process_args.json", "r") as f:
-        args_dict = json.load(f)
+    if args.video_dir == "":
+        root_dir = str(Path(args.dataset_dir).parent)
+        args.video_dir = os.path.join(root_dir, "videos")
 
-    for key, value in args_dict.items():
-        if not hasattr(args, key):
-            setattr(args, key, value)
     return args
 
 
@@ -65,7 +74,7 @@ def get_data(ds):
     sequels = []
     durings = []
     whole_video_captions = []
-    clip_captions = []
+    frame_captions = []
     video_ids = []
     llm_translation_asrs = []
     whisper_translation_asrs = []
@@ -88,11 +97,8 @@ def get_data(ds):
             already_seen_video.add(video_id)
 
             video_ids.append(video_id)
-            if "whole_video_caption" in row:
-                whole_video_captions.append(row["whole_video_caption"])
-            else:
-                whole_video_captions.append(row["clip2video_caption"])
-            clip_captions.append(row["clip_captions"])
+            whole_video_captions.append(row["frame2video_caption"])
+            frame_captions.append(row["frame_captions"])
 
             if "asr" in row:
                 llm_translation_asrs.append(row["asr"]["translated_llm"])
@@ -111,7 +117,7 @@ def get_data(ds):
         sequels,
         durings,
         whole_video_captions,
-        clip_captions,
+        frame_captions,
         query_to_videoind,
         video_ids,
         llm_translation_asrs,
@@ -126,6 +132,7 @@ cache = {}
 def call_func(param, **kwargs):
     print(f"Calling function: {param}", file=sys.stderr)
     if param == "query_vs_video":
+        global get_query_vs_video_score
         return get_query_vs_video_score(args=ARGS, queries=kwargs["queries"], video_ids=kwargs["video_ids"])
     if param == "query_vs_captions":
         return get_many_to_many_score(ARGS, kwargs["queries"], kwargs["captions"])
@@ -201,7 +208,14 @@ def form_captions(params, **kwargs):
 
 
 def infer():
-    ds = load_from_disk(ARGS.dataset_path)
+    try:
+        # First try to load from disk
+        ds = load_from_disk(ARGS.dataset_path)
+    except FileNotFoundError:
+        # If not found, load from huggingface datasets
+        ds = load_dataset(ARGS.dataset_path)
+    ARGS.num_of_frames = int(ds["num_of_frames"][0])
+
 
     (
         queries,

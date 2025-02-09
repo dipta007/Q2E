@@ -9,7 +9,7 @@ ARGS = None
 
 
 def get_dataset_dir(args):
-    dirs = ["HFdataset"]
+    dirs = ["Q2E"]
     if args.gen_llm_id == "meta-llama/Llama-3.3-70B-Instruct":
         dirs.append("LLAMA_3.3_70B")
     elif args.gen_llm_id == "meta-llama/Meta-Llama-3.1-70B-Instruct":
@@ -20,36 +20,24 @@ def get_dataset_dir(args):
         dirs.append("LLAMA_1B")
     elif args.gen_llm_id == "meta-llama/Llama-3.2-3B-Instruct":
         dirs.append("LLAMA_3B")
-    elif args.gen_llm_id == "Qwen/Qwen2.5-0.5B-Instruct":
-        dirs.append("Qwen_0.5B")
-    elif args.gen_llm_id == "Qwen/Qwen2.5-1.5B-Instruct":
-        dirs.append("Qwen_1.5B")
-    elif args.gen_llm_id == "Qwen/Qwen2.5-3B-Instruct":
-        dirs.append("Qwen_3B")
-    elif args.gen_llm_id == "Qwen/Qwen2.5-7B-Instruct":
-        dirs.append("Qwen_7B")
-    elif args.gen_llm_id == "Qwen/Qwen2.5-14B-Instruct":
-        dirs.append("Qwen_14B")
-    elif args.gen_llm_id == "Qwen/Qwen2.5-32B-Instruct":
-        dirs.append("Qwen_32B")
     elif args.gen_llm_id == "Qwen/Qwen2.5-72B-Instruct":
         dirs.append("Qwen_72B")
+    elif args.gen_llm_id == "Qwen/Qwen2.5-32B-Instruct":
+        dirs.append("Qwen_32B")
+    elif args.gen_llm_id == "Qwen/Qwen2.5-14B-Instruct":
+        dirs.append("Qwen_14B")
+    elif args.gen_llm_id == "Qwen/Qwen2.5-7B-Instruct":
+        dirs.append("Qwen_7B")
+    elif args.gen_llm_id == "Qwen/Qwen2.5-3B-Instruct":
+        dirs.append("Qwen_3B")
+    elif args.gen_llm_id == "Qwen/Qwen2.5-1.5B-Instruct":
+        dirs.append("Qwen_1.5B")
+    elif args.gen_llm_id == "Qwen/Qwen2.5-0.5B-Instruct":
+        dirs.append("Qwen_0.5B")
     else:
         raise ValueError("Invalid args.gen_llm_id")
 
-    if args.gen_vlm_id == "allenai/Molmo-7B-D-0924":
-        dirs.append("MOLMO_7B")
-    elif args.gen_vlm_id == "meta-llama/Llama-3.2-11B-Vision-Instruct":
-        dirs.append("LLAMA_11B")
-    elif args.gen_vlm_id == "meta-llama/Llama-3.2-90B-Vision-Instruct":
-        dirs.append("LLAMA_90B")
-    elif args.gen_vlm_id == "Qwen/Qwen2-VL-72B-Instruct":
-        dirs.append("Qwen_72B")
-    elif args.gen_vlm_id == "Qwen/Qwen2-VL-7B-Instruct":
-        dirs.append("Qwen_7B")
-    elif args.gen_vlm_id == "Qwen/Qwen2-VL-2B-Instruct":
-        dirs.append("Qwen_2B")
-    elif args.gen_vlm_id == "OpenGVLab/InternVL2_5-78B":
+    if args.gen_vlm_id == "OpenGVLab/InternVL2_5-78B":
         dirs.append("InternVL_78B")
     elif args.gen_vlm_id == "OpenGVLab/InternVL2_5-38B":
         dirs.append("InternVL_38B")

@@ -13,15 +13,15 @@ def main():
     queries = []
     asrs = []
     for i in range(len(ds)):
-        clip_captions = ds[i]["clip_captions"]
+        frame_captions = ds[i]["frame_captions"]
         video_id = ds[i]["video_id"]
         ASR_summary = get_asr_summary(video_id)
         ASR_refined = get_asr_refined(video_id)
 
         query = "# Frame Descriptions:\n\n"
-        for i, clip_caption in enumerate(clip_captions):
+        for i, frame_caption in enumerate(frame_captions):
             query += f"## Frame {i + 1} Description:\n"
-            query += f"{clip_caption}\n\n"
+            query += f"{frame_caption}\n\n"
 
         queries.append({"query": query, "ASR_summary": ASR_summary, "ASR_refined": ASR_refined})
 
@@ -34,7 +34,7 @@ def main():
         template_name = "summary_video_caption+ASR"
     outputs = generate(template_name, queries)
 
-    ds = ds.add_column("clip2video_caption", outputs["generated_text"])
+    ds = ds.add_column("frame2video_caption", outputs["generated_text"])
     if ARGS.with_asr:
         ds = ds.add_column("asr", asrs)
 
