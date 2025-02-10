@@ -14,7 +14,7 @@ This repo contains all the data and code related to the paper Q<sub>2</sub>E: <i
 To run the code in this project, first, create a Python virtual environment using uv. To install `uv`, follow the [UV Installation Guide](https://docs.astral.sh/uv/getting-started/installation/).
 
 ```bash
-uv venv
+uv venv --seed
 uv pip install torch
 uv pip install xformers==0.0.28.post3 --no-build-isolation
 uv sync
@@ -94,14 +94,14 @@ uv run -m src.data.frame2video_caption \
 echo "Without ASR"
 uv run -m src.eval.MultiCLIP.infer \
     --note=eval \
-    --dataset_dir={DATA_DIR}/{HFDatasetDIR} \
+    --dataset_dir={HFDatasetDIR} \
     --aggregation_methods=inv_entropy
 
 
 echo "With ASR"
 uv run -m src.eval.MultiCLIP.infer \
     --note=eval \
-    --dataset_dir={DATA_DIR}/{HFDatasetDIR}\
+    --dataset_dir={HFDatasetDIR}\
     --aggregation_methods=inv_entropy
 ```
 5. Evaluate using InternVideo2
@@ -109,14 +109,14 @@ uv run -m src.eval.MultiCLIP.infer \
 echo "Without ASR"
 uv run -m src.eval.InternVideo2.infer \
     --note=eval \
-    --dataset_dir={DATA_DIR}/{HFDatasetDIR}\
+    --dataset_dir={HFDatasetDIR}\
     --aggregation_methods=inv_entropy
 
 
 echo "With ASR"
 uv run -m src.eval.InternVideo2.infer \
     --note=eval \
-    --dataset_dir={DATA_DIR}/{HFDatasetDIR}\
+    --dataset_dir={HFDatasetDIR}\
     --aggregation_methods=inv_entropy
 ```
 
@@ -125,3 +125,7 @@ If you find this code useful for your research, please consider citing:
 ```
 Filled up after publication
 ```
+
+
+## TODO:
+- [ ] Add the missing link for the data.zip
