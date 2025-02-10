@@ -2424,6 +2424,7 @@ dependencies = [
     { name = "transformers" },
     { name = "vllm" },
     { name = "wandb" },
+    { name = "xformers" },
 ]
 
 [package.dev-dependencies]
@@ -2459,6 +2460,7 @@ requires-dist = [
     { name = "transformers", specifier = "==4.48.1" },
     { name = "vllm", specifier = "==0.6.4.post1" },
     { name = "wandb", specifier = ">=0.19.6" },
+    { name = "xformers", specifier = "==0.0.28.post3" },
 ]
 
 [package.metadata.requires-dev]
@@ -3447,8 +3449,8 @@ name = "xformers"
 version = "0.0.28.post3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy", marker = "platform_machine != 'aarch64' and sys_platform == 'linux'" },
-    { name = "torch", marker = "platform_machine != 'aarch64' and sys_platform == 'linux'" },
+    { name = "numpy" },
+    { name = "torch" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/00/d8/7301b2044e29b384b6ec009ed37002f4df48906a2a772654e8386fa3b730/xformers-0.0.28.post3.tar.gz", hash = "sha256:c7a2392c874dfd8f38b73e14492baf048a4f50f77ddf522bfcf6ebf5ee84d567", size = 7758532 }
 wheels = [

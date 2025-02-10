@@ -30,6 +30,7 @@ dependencies = [
     "transformers==4.48.1",
     "vllm==0.6.4.post1",
     "wandb>=0.19.6",
+    "xformers==0.0.28.post3",
 ]
 
 [dependency-groups]
