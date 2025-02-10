@@ -16,8 +16,6 @@ from .evaluation import retrieval_score
 from .fusion_score import fusion_exp_entropy, fusion_inverse_entropy, fusion_reciprocal_rank
 from .text_embedder import get_many_to_many_score
 from .utils import get_git_commit_hash
-from .InternVideo2.vision_embedder import get_query_vs_video_score as get_query_vs_video_score_InternVideo2
-from .MultiCLIP.vision_embedder import get_query_vs_video_score as get_query_vs_video_score_MultiCLIP
 
 get_query_vs_video_score = None
 logging.getLogger().setLevel(logging.ERROR)
@@ -48,8 +46,10 @@ def get_args():
 
     global get_query_vs_video_score
     if args.t2v_encoder == "multiclip":
+        from .MultiCLIP.vision_embedder import get_query_vs_video_score as get_query_vs_video_score_MultiCLIP
         get_query_vs_video_score = get_query_vs_video_score_MultiCLIP
     elif args.t2v_encoder == "internvideo2":
+        from .InternVideo2.vision_embedder import get_query_vs_video_score as get_query_vs_video_score_InternVideo2
         get_query_vs_video_score = get_query_vs_video_score_InternVideo2
     else:
         raise ValueError(f"Invalid t2v_encoder: {args.t2v_encoder}")

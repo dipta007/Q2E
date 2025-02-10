@@ -15,6 +15,8 @@ To run the code in this project, first, create a Python virtual environment usin
 
 ```bash
 uv venv
+uv pip install torch
+uv pip install xformers==0.0.28.post3 --no-build-isolation
 uv sync
 ```
 

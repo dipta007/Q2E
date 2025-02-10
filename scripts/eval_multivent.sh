@@ -3,7 +3,7 @@ export WANDB_MODE=disabled
 echo -e "====>> Running evaluation on MultiVENT dataset (w/o ASR) with MultiCLIP encoder\n"
 uv run -m src.eval.infer \
     --note=encoder-multiclip_data_msrvtt_noasr \
-    --dataset_dir=/p/.work_trial/sroydip1/q2e/data/hf/msr/Q2E_MSRVTT-1kA_LLAMA_3.3_70B_InternVL_38B_Funiform_16_ASR \
+    --dataset_dir=data/MultiVENT/Q2E_MultiVENT_LLAMA_3.3_70B_InternVL_38B_Funiform_16_noASR \
     --aggregation_methods=inv_entropy \
     --t2v_encoder=multiclip
 
@@ -11,7 +11,7 @@ uv run -m src.eval.infer \
 echo -e "\n\n\n\n====>> Running evaluation on MultiVENT dataset (w/ ASR) with MultiCLIP encoder\n"
 uv run -m src.eval.infer \
     --note=encoder-multiclip_data_msrvtt_asr \
-    --dataset_dir=data/MultiVENT/HFdataset_LLAMA_3.3_70B_InternVL_38B_Funiform_16_ASR \
+    --dataset_dir=data/MultiVENT/Q2E_MultiVENT_LLAMA_3.3_70B_InternVL_38B_Funiform_16_ASR \
     --aggregation_methods=inv_entropy \
     --t2v_encoder=multiclip
 
@@ -19,7 +19,7 @@ uv run -m src.eval.infer \
 echo -e "\n\n\n\n====>> Running evaluation on MultiVENT dataset (w/o ASR) with InternVideo2 encoder\n"
 uv run -m src.eval.infer \
     --note=encoder-internvideo2_data_msrvtt_noasr \
-    --dataset_dir=data/MultiVENT/HFdataset_LLAMA_3.3_70B_InternVL_38B_Funiform_16_noASR \
+    --dataset_dir=data/MultiVENT/Q2E_MultiVENT_LLAMA_3.3_70B_InternVL_38B_Funiform_16_noASR \
     --aggregation_methods=inv_entropy \
     --t2v_encoder=internvideo2
 
@@ -27,6 +27,6 @@ uv run -m src.eval.infer \
 echo -e "\n\n\n\n====>> Running evaluation on MultiVENT dataset (w/ ASR) with InternVideo2 encoder\n"
 uv run -m src.eval.infer \
     --note=encoder-internvideo2_data_msrvtt_asr \
-    --dataset_dir=data/MultiVENT/HFdataset_LLAMA_3.3_70B_InternVL_38B_Funiform_16_ASR \
+    --dataset_dir=data/MultiVENT/Q2E_MultiVENT_LLAMA_3.3_70B_InternVL_38B_Funiform_16_ASR \
     --aggregation_methods=inv_entropy \
     --t2v_encoder=internvideo2
