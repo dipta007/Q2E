@@ -21,6 +21,7 @@ uv sync
 ```
 
 ## Download Pre-Trained Models
+Due to different licensing agreements, we cannot provide the models directly. However, you can download the models using the following commands.
 ```bash
 mkdir -p data/models/MultiCLIP
 wget -O data/models/MultiCLIP/open_clip_pytorch_model.bin https://huggingface.co/laion/CLIP-ViT-H-14-frozen-xlm-roberta-large-laion5B-s13B-b90k/resolve/main/open_clip_pytorch_model.bin
@@ -31,8 +32,9 @@ Download the InternVideo2 model from [here](https://huggingface.co/OpenGVLab/Int
 
 ## Download Pre-Generated Data (with **VIDEOS**)
 ```bash
-gdown {{missing}}
-unzip data.zip -d data
+source .venv/bin/activate
+gdown --fuzzy https://drive.google.com/file/d/1PkyLH5EUoYttBqpuB_xFA7HNmbC5GtRk/view?usp=drive_link
+tar -xzvf data.tar.gz
 ```
 
 ## Evaluation
@@ -54,8 +56,8 @@ Data for MSR-VTT-1kA and MultiVENT datasets can be generated using the scripts b
 |:-----------:|:-----:|:-------------------------------------:|
 |  MultiVENT  |   ✓   |  [scripts/generate_multivent_asr.sh](scripts/generate_multivent_asr.sh)  |
 |  MultiVENT  |   -   | [scripts/generate_multivent_noasr.sh](scripts/generate_multivent_noasr.sh) |
-| MSR-VTT-1kA |   -   |   [scripts/generate_msrvtt_noasr.sh](scripts/generate_msrvtt_noasr.sh)  |
 | MSR-VTT-1kA |   ✓   |    [scripts/generate_msrvtt_asr.sh](scripts/generate_msrvtt_asr.sh)   |
+| MSR-VTT-1kA |   -   |   [scripts/generate_msrvtt_noasr.sh](scripts/generate_msrvtt_noasr.sh)  |
 
 
 ## Use Your Own Data
@@ -125,7 +127,3 @@ If you find this code useful for your research, please consider citing:
 ```
 Filled up after publication
 ```
-
-
-## TODO:
-- [ ] Add the missing link for the data.zip

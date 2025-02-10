@@ -23,7 +23,7 @@ dependencies = [
     "scenedetect>=0.6.5.2",
     "torchaudio>=2.5.0",
     "torch==2.5.1",
-    "torchmetrics==1.0.3",
+    "torchmetrics>=1.6.0",
     "torchvision>=0.20.0",
     "tqdm<=4.66.5",
     "transformers==4.48.1",
