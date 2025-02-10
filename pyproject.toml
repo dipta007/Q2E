@@ -3,7 +3,7 @@ name = "q2e"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10, <3.11"
 dependencies = [
     "accelerate>=0.26.0",
     "beautifulsoup4>=4.13.3",
@@ -21,12 +21,12 @@ dependencies = [
     "python-box>=7.3.2",
     "ragatouille>=0.0.8.post4",
     "scenedetect>=0.6.5.2",
-    "setuptools>=75.8.0",
+    "setuptools<=70.2.0",
     "torch==2.5.1",
     "torchaudio>=2.5.0",
-    "torchmetrics>=1.6.1",
+    "torchmetrics==1.0.3",
     "torchvision>=0.20.0",
-    "tqdm>=4.67.1",
+    "tqdm<=4.66.5",
     "transformers==4.48.1",
     "vllm==0.6.4.post1",
     "wandb>=0.19.6",
