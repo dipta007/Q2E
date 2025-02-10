@@ -12,10 +12,10 @@ import torch
 import wandb
 from datasets import load_dataset, load_from_disk
 
-from ..evaluation import retrieval_score
-from ..fusion_score import fusion_exp_entropy, fusion_inverse_entropy, fusion_reciprocal_rank
-from ..text_embedder import get_many_to_many_score
-from ..utils import get_git_commit_hash
+from .evaluation import retrieval_score
+from .fusion_score import fusion_exp_entropy, fusion_inverse_entropy, fusion_reciprocal_rank
+from .text_embedder import get_many_to_many_score
+from .utils import get_git_commit_hash
 from .InternVideo2.vision_embedder import get_query_vs_video_score as get_query_vs_video_score_InternVideo2
 from .MultiCLIP.vision_embedder import get_query_vs_video_score as get_query_vs_video_score_MultiCLIP
 
@@ -47,14 +47,14 @@ def get_args():
         args.text_emb_type = "colbert"
 
     global get_query_vs_video_score
-    if args.t2v_encoder == "MultiCLIP":
+    if args.t2v_encoder == "multiclip":
         get_query_vs_video_score = get_query_vs_video_score_MultiCLIP
-    elif args.t2v_encoder == "InternVideo2":
+    elif args.t2v_encoder == "internvideo2":
         get_query_vs_video_score = get_query_vs_video_score_InternVideo2
     else:
         raise ValueError(f"Invalid t2v_encoder: {args.t2v_encoder}")
 
-    args.dataset_path = os.path.join(args.dataset_dir, "dataset")
+    args.dataset_path = args.dataset_dir
 
     args.git_hash = get_git_commit_hash()
 
@@ -211,12 +211,13 @@ def infer():
     try:
         # First try to load from disk
         ds = load_from_disk(ARGS.dataset_path)
+        if "train" in ds:   ds = ds["train"]
     except FileNotFoundError:
         # If not found, load from huggingface datasets
         ds = load_dataset(ARGS.dataset_path)
-        ds = ds['train']
+        if "train" in ds:   ds = ds["train"]
     ARGS.num_of_frames = int(ds["num_of_frames"][0])
-
+    ARGS.with_asr = "asr" in ds.column_names
 
     (
         queries,

@@ -2397,7 +2397,7 @@ wheels = [
 [[package]]
 name = "q2e"
 version = "0.1.0"
-source = { editable = "." }
+source = { virtual = "." }
 dependencies = [
     { name = "accelerate" },
     { name = "beautifulsoup4" },
@@ -2415,6 +2415,7 @@ dependencies = [
     { name = "python-box" },
     { name = "ragatouille" },
     { name = "scenedetect" },
+    { name = "torch" },
     { name = "torchaudio" },
     { name = "torchmetrics" },
     { name = "torchvision" },
@@ -2448,6 +2449,7 @@ requires-dist = [
     { name = "python-box", specifier = ">=7.3.2" },
     { name = "ragatouille", specifier = ">=0.0.8.post4" },
     { name = "scenedetect", specifier = ">=0.6.5.2" },
+    { name = "torch", specifier = "==2.5.1" },
     { name = "torchaudio", specifier = ">=2.5.0" },
     { name = "torchmetrics", specifier = "==1.0.3" },
     { name = "torchvision", specifier = ">=0.20.0" },

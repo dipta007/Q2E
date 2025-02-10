@@ -1,15 +1,15 @@
 export WANDB_MODE=disabled
 
 echo -e "====>> Running evaluation on MSRVTT-1KA dataset (w/o ASR) with MultiCLIP encoder\n"
-uv run -m src.eval.MultiCLIP.infer \
-    --note=encoder-multiclip_data_msrvtt_asr \
+uv run -m src.eval.infer \
+    --note=encoder-multiclip_data_msrvtt_noasr \
     --dataset_dir=data/MSR-VTT-1kA/HFdataset_LLAMA_3.3_70B_InternVL_38B_Funiform_16_noASR \
     --aggregation_methods=inv_entropy \
     --t2v_encoder=multiclip
 
 
 echo -e "\n\n\n\n====>> Running evaluation on MSRVTT-1KA dataset (w/ ASR) with MultiCLIP encoder\n"
-uv run -m src.eval.MultiCLIP.infer \
+uv run -m src.eval.infer \
     --note=encoder-multiclip_data_msrvtt_asr \
     --dataset_dir=data/MSR-VTT-1kA/HFdataset_LLAMA_3.3_70B_InternVL_38B_Funiform_16_ASR \
     --aggregation_methods=inv_entropy \
@@ -17,16 +17,16 @@ uv run -m src.eval.MultiCLIP.infer \
 
 
 echo -e "\n\n\n\n====>> Running evaluation on MSRVTT-1KA dataset (w/o ASR) with InternVideo2 encoder\n"
-uv run -m src.eval.InternVideo2.infer \
-    --note=encoder-multiclip_data_msrvtt_asr \
+uv run -m src.eval.infer \
+    --note=encoder-internvideo2_data_msrvtt_noasr \
     --dataset_dir=data/MSR-VTT-1kA/HFdataset_LLAMA_3.3_70B_InternVL_38B_Funiform_16_noASR \
     --aggregation_methods=inv_entropy \
     --t2v_encoder=internvideo2
 
 
 echo -e "\n\n\n\n====>> Running evaluation on MSRVTT-1KA dataset (w/ ASR) with InternVideo2 encoder\n"
-uv run -m src.eval.InternVideo2.infer \
-    --note=encoder-multiclip_data_msrvtt_asr \
+python -m src.eval.infer \
+    --note=encoder-internvideo2_data_msrvtt_asr \
     --dataset_dir=data/MSR-VTT-1kA/HFdataset_LLAMA_3.3_70B_InternVL_38B_Funiform_16_ASR \
     --aggregation_methods=inv_entropy \
     --t2v_encoder=internvideo2
