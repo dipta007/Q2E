@@ -2397,7 +2397,7 @@ wheels = [
 [[package]]
 name = "q2e"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "accelerate" },
     { name = "beautifulsoup4" },
@@ -2415,8 +2415,6 @@ dependencies = [
     { name = "python-box" },
     { name = "ragatouille" },
     { name = "scenedetect" },
-    { name = "setuptools" },
-    { name = "torch" },
     { name = "torchaudio" },
     { name = "torchmetrics" },
     { name = "torchvision" },
@@ -2424,7 +2422,6 @@ dependencies = [
     { name = "transformers" },
     { name = "vllm" },
     { name = "wandb" },
-    { name = "xformers" },
 ]
 
 [package.dev-dependencies]
@@ -2451,8 +2448,6 @@ requires-dist = [
     { name = "python-box", specifier = ">=7.3.2" },
     { name = "ragatouille", specifier = ">=0.0.8.post4" },
     { name = "scenedetect", specifier = ">=0.6.5.2" },
-    { name = "setuptools", specifier = "<=70.2.0" },
-    { name = "torch", specifier = "==2.5.1" },
     { name = "torchaudio", specifier = ">=2.5.0" },
     { name = "torchmetrics", specifier = "==1.0.3" },
     { name = "torchvision", specifier = ">=0.20.0" },
@@ -2460,7 +2455,6 @@ requires-dist = [
     { name = "transformers", specifier = "==4.48.1" },
     { name = "vllm", specifier = "==0.6.4.post1" },
     { name = "wandb", specifier = ">=0.19.6" },
-    { name = "xformers", specifier = "==0.0.28.post3" },
 ]
 
 [package.metadata.requires-dev]
@@ -3449,8 +3443,8 @@ name = "xformers"
 version = "0.0.28.post3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy" },
-    { name = "torch" },
+    { name = "numpy", marker = "platform_machine != 'aarch64' and sys_platform == 'linux'" },
+    { name = "torch", marker = "platform_machine != 'aarch64' and sys_platform == 'linux'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/00/d8/7301b2044e29b384b6ec009ed37002f4df48906a2a772654e8386fa3b730/xformers-0.0.28.post3.tar.gz", hash = "sha256:c7a2392c874dfd8f38b73e14492baf048a4f50f77ddf522bfcf6ebf5ee84d567", size = 7758532 }
 wheels = [

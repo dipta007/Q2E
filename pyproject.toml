@@ -1,3 +1,9 @@
+[build-system]
+requires = [
+    "setuptools>=61.0",
+    "torch==2.5.1"
+]
+
 [project]
 name = "q2e"
 version = "0.1.0"
@@ -21,8 +27,6 @@ dependencies = [
     "python-box>=7.3.2",
     "ragatouille>=0.0.8.post4",
     "scenedetect>=0.6.5.2",
-    "setuptools<=70.2.0",
-    "torch==2.5.1",
     "torchaudio>=2.5.0",
     "torchmetrics==1.0.3",
     "torchvision>=0.20.0",
@@ -30,7 +34,6 @@ dependencies = [
     "transformers==4.48.1",
     "vllm==0.6.4.post1",
     "wandb>=0.19.6",
-    "xformers==0.0.28.post3",
 ]
 
 [dependency-groups]
