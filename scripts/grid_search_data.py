@@ -86,7 +86,7 @@ def pipeline(data_dir, gen_llm_id, gen_vlm_id, frame_selection_method, num_of_fr
         f"#### Running pipeline for data_dir={data_dir}, gen_llm_id={gen_llm_id}, gen_vlm_id={gen_vlm_id}, frame_selection_method={frame_selection_method}, with_asr={with_asr} ####"
     )
 
-    if with_asr and run(cmd0, args, "transcribing videos") != 0:
+    if with_asr and run(cmd0, "", "transcribing videos") != 0:
         return
 
     if run(cmd1, args, "processing raw data") != 0:
