@@ -11,12 +11,13 @@ This repo contains all the data and code related to the paper Q<sub>2</sub>E: <i
 - [Citation](#citation)
 
 ## Installation
+> [!CAUTION]
+> Installation was tested on CUDA 12.4 and A100. If you see errors, please open a new issue.
+
 To run the code in this project, first, create a Python virtual environment using uv. To install `uv`, follow the [UV Installation Guide](https://docs.astral.sh/uv/getting-started/installation/).
 
 ```bash
-uv venv --seed
-uv pip install torch
-uv pip install xformers==0.0.28.post3 --no-build-isolation
+uv venv --seed --python 3.10
 uv sync
 ```
 
