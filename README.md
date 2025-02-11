@@ -8,6 +8,7 @@ This repo contains all the data and code related to the paper Q<sub>2</sub>E: <i
 - [Evaluation](#evaluation)
 - [Data Generation Scripts](#data-generation-scripts)
 - [Use Your Own Data](#use-your-own-data)
+- [Using Docker](#using-docker)
 - [Citation](#citation)
 
 ## Installation
@@ -121,6 +122,27 @@ python -m src.eval.InternVideo2.infer \
     --note=eval \
     --dataset_dir={HFDatasetDIR}\
     --aggregation_methods=inv_entropy
+```
+
+## Using Docker
+Many of us doesn't have root permission to the server, there comes the [udocker](https://github.com/indigo-dc/udocker) to the rescue.
+To use the code in a Docker container, follow the instructions below.
+```bash
+# Install udocker
+uv add udocker
+# Create and run the container
+udocker pull runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04
+udocker create --name="runpod" runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04
+udocker setup --nvidia runpod
+udocker run --volume="/${PWD}:/workspace" --name="runpod" runpod bash
+
+# Inside the container
+## install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+## install the dependencies
+uv venv --seed --python=3.10
+uv sync
 ```
 
 ## Citation
