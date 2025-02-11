@@ -1,11 +1,12 @@
 import os
-import torch
+from pathlib import Path
+
 import numpy as np
+import torch
 from box import Box
-from PIL import Image
-from tqdm.auto import tqdm
-from open_clip.tokenizer import HFTokenizer
 from open_clip import CLIPTextCfg, CLIPVisionCfg, CustomTextCLIP
+from open_clip.tokenizer import HFTokenizer
+from PIL import Image
 from torchvision.transforms import (
     CenterCrop,
     Compose,
@@ -14,7 +15,7 @@ from torchvision.transforms import (
     Resize,
     ToTensor,
 )
-from pathlib import Path
+from tqdm.auto import tqdm
 
 CLIP_FRAME_DIR = "data/models/MultiCLIP/clip_frames"
 

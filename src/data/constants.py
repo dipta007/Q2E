@@ -51,8 +51,6 @@ def get_dataset_dir(args):
         dirs.append("InternVL_2B")
     elif args.gen_vlm_id == "OpenGVLab/InternVL2_5-1B":
         dirs.append("InternVL_1B")
-    elif args.gen_vlm_id == "mistral-community/pixtral-12b-240910":
-        dirs.append("Pixtral_12B")
     else:
         raise ValueError("Invalid args.gen_vlm_id")
 
@@ -82,7 +80,7 @@ def get_args():
     parser.add_argument("--video_dir", type=str, required=True)
 
     parser.add_argument("--gen_llm_id", type=str, default="meta-llama/Llama-3.3-70B-Instruct")
-    parser.add_argument("--gen_vlm_id", type=str, default="allenai/Molmo-7B-D-0924")
+    parser.add_argument("--gen_vlm_id", type=str, default="OpenGVLab/InternVL2_5-38B")
     parser.add_argument("--with_asr", action="store_true", default=False)
 
     parser.add_argument("--gen_temperature", type=float, default=0.8)
@@ -119,6 +117,8 @@ def get_args():
         print("Dataset does not exist. Proceeding...")
     finally:
         if ds and len(ds.column_names) == 10:
+            sys.exit("Dataset already exists. Exiting...")
+        elif ds and len(ds.column_names) == 9 and args.with_asr:
             sys.exit("Dataset already exists. Exiting...")
 
     args_dict = vars(args)

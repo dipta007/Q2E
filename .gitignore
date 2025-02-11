@@ -191,3 +191,5 @@ pyrightconfig.json
 
 /data/
 /raw_data/
+
+wandb

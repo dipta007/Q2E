@@ -47,9 +47,11 @@ def get_args():
     global get_query_vs_video_score
     if args.t2v_encoder == "multiclip":
         from .MultiCLIP.vision_embedder import get_query_vs_video_score as get_query_vs_video_score_MultiCLIP
+
         get_query_vs_video_score = get_query_vs_video_score_MultiCLIP
     elif args.t2v_encoder == "internvideo2":
         from .InternVideo2.vision_embedder import get_query_vs_video_score as get_query_vs_video_score_InternVideo2
+
         get_query_vs_video_score = get_query_vs_video_score_InternVideo2
     else:
         raise ValueError(f"Invalid t2v_encoder: {args.t2v_encoder}")
@@ -211,11 +213,13 @@ def infer():
     try:
         # First try to load from disk
         ds = load_from_disk(ARGS.dataset_path)
-        if "train" in ds:   ds = ds["train"]
+        if "train" in ds:
+            ds = ds["train"]
     except FileNotFoundError:
         # If not found, load from huggingface datasets
         ds = load_dataset(ARGS.dataset_path)
-        if "train" in ds:   ds = ds["train"]
+        if "train" in ds:
+            ds = ds["train"]
     ARGS.num_of_frames = int(ds["num_of_frames"][0])
     ARGS.with_asr = "asr" in ds.column_names
 
