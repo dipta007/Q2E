@@ -209,20 +209,6 @@ def get_prequel_sequel_during(queries):
     print("============ Refining Prequel ============")
     prequel_dict = refine_events(prequel_dict)
 
-    print("============ Generating Sequel ============")
-    sequel_out = generate("sequel", queries)
-    sequel_dict = {}
-    for query, prompt, generated_text in zip(sequel_out["query"], sequel_out["prompt"], sequel_out["generated_text"]):
-        processed_text = process_generated_text(generated_text, "EVENTS:", numbered=True)
-        processed_text = get_cartesian_product(processed_text, time_dict[query], place_dict[query], event_dict[query])
-        sequel_dict[query] = {
-            "prompt": prompt,
-            "generated_text": generated_text,
-            "cartesian_product": processed_text,
-        }
-    print("============ Refining Sequel ============")
-    sequel_dict = refine_events(sequel_dict)
-
     print("============ Generating During ============")
     during_out = generate("during", queries)
     during_dict = {}
@@ -236,6 +222,20 @@ def get_prequel_sequel_during(queries):
         }
     print("============ Refining During ============")
     during_dict = refine_events(during_dict)
+
+    print("============ Generating Sequel ============")
+    sequel_out = generate("sequel", queries)
+    sequel_dict = {}
+    for query, prompt, generated_text in zip(sequel_out["query"], sequel_out["prompt"], sequel_out["generated_text"]):
+        processed_text = process_generated_text(generated_text, "EVENTS:", numbered=True)
+        processed_text = get_cartesian_product(processed_text, time_dict[query], place_dict[query], event_dict[query])
+        sequel_dict[query] = {
+            "prompt": prompt,
+            "generated_text": generated_text,
+            "cartesian_product": processed_text,
+        }
+    print("============ Refining Sequel ============")
+    sequel_dict = refine_events(sequel_dict)
 
     destroy_llm()
 
