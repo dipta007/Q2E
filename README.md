@@ -69,24 +69,24 @@ If you want to generate data using your own dataset, i.e, `{DATA_DIR}`, follow t
 3. Generate the data
 ```bash
 echo "Transcribing videos"
-uv run -m src.data.transcribe_audios \
+python -m src.data.transcribe_audios \
     --video_dir={DATA_DIR}/videos
 
 echo "Processing raw data"
-uv run -m src.data.query_decomp  \
+python -m src.data.query_decomp  \
     --data_dir={DATA_DIR} \
     --video_dir={DATA_DIR}/videos \
     --gen_max_model_len=2048
 
 echo "Captioning frames"
-uv run -m src.data.frame_caption \
+python -m src.data.frame_caption \
     --data_dir={DATA_DIR} \
     --video_dir={DATA_DIR}/videos \
     --gen_max_model_len=16384 \
     --num_of_frames=16
 
 echo "Captioning videos"
-uv run -m src.data.frame2video_caption \
+python -m src.data.frame2video_caption \
     --data_dir={DATA_DIR} \
     --video_dir={DATA_DIR}/videos \
     --gen_max_model_len=16384 \
@@ -95,14 +95,14 @@ uv run -m src.data.frame2video_caption \
 4. Evaluate using MultiCLIP
 ```bash
 echo "Without ASR"
-uv run -m src.eval.MultiCLIP.infer \
+python -m src.eval.MultiCLIP.infer \
     --note=eval \
     --dataset_dir={HFDatasetDIR} \
     --aggregation_methods=inv_entropy
 
 
 echo "With ASR"
-uv run -m src.eval.MultiCLIP.infer \
+python -m src.eval.MultiCLIP.infer \
     --note=eval \
     --dataset_dir={HFDatasetDIR}\
     --aggregation_methods=inv_entropy
@@ -110,14 +110,14 @@ uv run -m src.eval.MultiCLIP.infer \
 5. Evaluate using InternVideo2
 ```bash
 echo "Without ASR"
-uv run -m src.eval.InternVideo2.infer \
+python -m src.eval.InternVideo2.infer \
     --note=eval \
     --dataset_dir={HFDatasetDIR}\
     --aggregation_methods=inv_entropy
 
 
 echo "With ASR"
-uv run -m src.eval.InternVideo2.infer \
+python -m src.eval.InternVideo2.infer \
     --note=eval \
     --dataset_dir={HFDatasetDIR}\
     --aggregation_methods=inv_entropy

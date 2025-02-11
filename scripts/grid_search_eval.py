@@ -122,7 +122,7 @@ def get_cmd(dataset, agg_methods, text_emb_type, model, infer_version=0):
         notes.append("ASR")
 
     cmd = f"""\
-uv run -m src.eval.infer \
+python -m src.eval.infer \
     --note={"-".join(notes)} \
     --dataset_dir={dataset} \
     --aggregation_methods={".".join(agg_methods)} \

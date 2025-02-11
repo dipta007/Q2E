@@ -64,7 +64,7 @@ def run(cmd, args, desc):
 def pipeline(data_dir, gen_llm_id, gen_vlm_id, frame_selection_method, num_of_frames, with_asr, debug=False):
     video_dir = f"{data_dir}/videos"
 
-    cmd0 = f"""uv run -m src.data.transcribe_audios \
+    cmd0 = f"""python -m src.data.transcribe_audios \
         --video_dir={video_dir}"""
 
     args = f"""--data_dir="{data_dir}" \
@@ -78,9 +78,9 @@ def pipeline(data_dir, gen_llm_id, gen_vlm_id, frame_selection_method, num_of_fr
     if debug:
         args += " --debug"
 
-    cmd1 = "uv run -m src.data.query_decomp --gen_max_model_len=2048"
-    cmd2 = "uv run -m src.data.frame_caption --gen_max_model_len=16384"
-    cmd3 = "uv run -m src.data.frame2video_caption --gen_max_model_len=16384"
+    cmd1 = "python -m src.data.query_decomp --gen_max_model_len=2048"
+    cmd2 = "python -m src.data.frame_caption --gen_max_model_len=16384"
+    cmd3 = "python -m src.data.frame2video_caption --gen_max_model_len=16384"
 
     print(
         f"#### Running pipeline for data_dir={data_dir}, gen_llm_id={gen_llm_id}, gen_vlm_id={gen_vlm_id}, frame_selection_method={frame_selection_method}, with_asr={with_asr} ####"

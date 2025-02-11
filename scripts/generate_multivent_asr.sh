@@ -1,10 +1,10 @@
 echo "Transcribing videos"
-uv run -m src.data.transcribe_audios \
+python -m src.data.transcribe_audios \
     --video_dir=data/MultiVENT/videos
 
 
 echo "Processing raw data"
-uv run -m src.data.query_decomp  \
+python -m src.data.query_decomp  \
     --data_dir=data/MultiVENT \
     --video_dir=data/MultiVENT/videos \
     --with_asr \
@@ -12,7 +12,7 @@ uv run -m src.data.query_decomp  \
 
 
 echo "Captioning frames"
-uv run -m src.data.frame_caption \
+python -m src.data.frame_caption \
     --data_dir=data/MultiVENT \
     --video_dir=data/MultiVENT/videos \
     --with_asr \
@@ -20,7 +20,7 @@ uv run -m src.data.frame_caption \
 
 
 echo "Captioning videos"
-uv run -m src.data.frame2video_caption \
+python -m src.data.frame2video_caption \
     --data_dir=data/MultiVENT \
     --video_dir=data/MultiVENT/videos \
     --with_asr \
