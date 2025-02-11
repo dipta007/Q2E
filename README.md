@@ -1,6 +1,9 @@
 # Q<sub>2</sub>E
 This repo contains all the data and code related to the paper Q<sub>2</sub>E: <ins>**Q**</ins>uery-to-<ins>**E**</ins>vent Decomposition for Zero-Shot Multilingual Text-to-Video Retrieval
 
+## 🔥News:
+* [14 Feb, 2025] Paper submitted to ARR February cycle.
+
 ## Outlines
 - [Installation](#installation)
 - [Download Pre-Trained Models](#download-pre-trained-models)
@@ -60,6 +63,7 @@ Data for MSR-VTT-1kA and MultiVENT datasets can be generated using the scripts b
 |  MultiVENT  |   -   | [scripts/generate_multivent_noasr.sh](scripts/generate_multivent_noasr.sh) |
 | MSR-VTT-1kA |   ✓   |    [scripts/generate_msrvtt_asr.sh](scripts/generate_msrvtt_asr.sh)   |
 | MSR-VTT-1kA |   -   |   [scripts/generate_msrvtt_noasr.sh](scripts/generate_msrvtt_noasr.sh)  |
+| ALL         |  ALL  |   [scripts/grid_search_data.py](scripts/grid_search_data.py)  |
 
 
 ## Use Your Own Data
