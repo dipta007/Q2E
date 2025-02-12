@@ -6,7 +6,8 @@
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
   <meta name="description" content="DESCRIPTION META TAG">
-  <meta property="og:title" content="Q2E: Query-to-Event Decomposition for Zero-Shot Multilingual Video-Text Retrieval" />
+  <meta property="og:title"
+    content="Q2E: Query-to-Event Decomposition for Zero-Shot Multilingual Video-Text Retrieval" />
   <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG" />
   <meta property="og:url" content="" />
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
@@ -15,7 +16,8 @@
   <meta property="og:image:height" content="630" />
 
 
-  <meta name="twitter:title" content="Q2E: Query-to-Event Decomposition for Zero-Shot Multilingual Video-Text Retrieval">
+  <meta name="twitter:title"
+    content="Q2E: Query-to-Event Decomposition for Zero-Shot Multilingual Video-Text Retrieval">
   <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
   <meta name="twitter:image" content="static/images/logo.png">
@@ -167,14 +169,14 @@
               Zero-Shot Multilingual Video-Text Retrieval</h2>
             <br>
             <!-- <div class="is-size-5 publication-authors"> -->
-              <!-- Paper authors -->
-              <!-- <span class="author-block">
+            <!-- Paper authors -->
+            <!-- <span class="author-block">
                 <a href="#" target="_blank">Anonymized Author</a>
             </div> -->
 
             <!-- <div class="is-size-5 publication-authors">
               <span class="author-block">Anonymized University<br>Submitted to ACL, 2025</span> -->
-              <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+            <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
             <!-- </div> -->
 
             <div class="column has-text-centered">
@@ -304,11 +306,13 @@
               for dataset-specific fine-tuning. However, due to differences in domain distributions, most text-to-video
               retrieval systems still rely on such fine-tuning. Recent advancements in large language models (LLMs) and
               vision-language models (VLMs) have shown impressive proficiency in understanding and applying new
-              knowledge. In this work, we present Q<sub>2</sub>E: a drop-in text-to-video retrieval method adaptable to any
+              knowledge. In this work, we present Q<sub>2</sub>E: a drop-in text-to-video retrieval method adaptable to
+              any
               dataset, domain, LLM, or VLM without requiring fine-tuning. Our approach leverages the embedded world
               knowledge in LLMs and VLMs to decompose queries and generate contextualized frame captions. We also adopt
               entropy-based fusion scoring for zero-shot fusion of multiple ranks. Through evaluations on two diverse
-              datasets and multiple retrieval metrics, we demonstrate that Q<sub>2</sub>E outperforms several state-of-the-art
+              datasets and multiple retrieval metrics, we demonstrate that Q<sub>2</sub>E outperforms several
+              state-of-the-art
               baselines, highlighting the advantages of event-based decomposition in text-to-video retrieval systems. We
               have open-sourced the code and data for future research.
               </li>
@@ -369,7 +373,8 @@
           <div class="model-labels-container is-size-5">
             <span><b>Baseline Encoders</b>:</span>
             <a href="https://arxiv.org/abs/2306.02329" target="_blank" style="padding: 5px 10px;">MultiCLIP (MC)</a>,
-            <a href="https://arxiv.org/abs/2403.15377v4" target="_blank" style="padding: 5px 10px;">InternVideo2-1b (IV2)</a>
+            <a href="https://arxiv.org/abs/2403.15377v4" target="_blank" style="padding: 5px 10px;">InternVideo2-1b
+              (IV2)</a>
             <p></p>
           </div>
           <div class="model-labels-container is-size-5">
@@ -399,16 +404,16 @@
             <tbody>
               <tr style="background-color: rgba(110, 194, 134, 0.15);">
                 <td>MC</td>
-                <td><u>9.48</u></td>
-                <td><u>43.94</u></td>
-                <td><u>70.69</u></td>
-                <td><u>86.10</u></td>
-                <td><u>79.92</u></td>
-                <td><u>65.06</u></td>
-                <td><u>0.90</u></td>
-                <td><u>74.73</u></td>
-                <td><u>85.15</u></td>
-                <td><u>23.22</u></td>
+                <td><u>9.83</u></td>
+                <td><u>44.32</u></td>
+                <td><u>70.82</u></td>
+                <td><u>88.80</u></td>
+                <td><u>80.77</u></td>
+                <td><u>65.25</u></td>
+                <td><u>0.92</u></td>
+                <td><u>75.34</u></td>
+                <td><u>86.33</u></td>
+                <td><u>22.12</u></td>
                 <td><u><b>6</b></u></td>
               </tr>
               <tr style="background-color: rgba(110, 194, 134, 0.15);">
@@ -429,33 +434,33 @@
               <tr style="background-color: rgba(110, 194, 134, 0.15);">
                 <td>MC + Q<sub>2</sub>E</td>
                 <td>10.24</td>
-                <td>46.17</td>
-                <td>75.54</td>
+                <td>46.71</td>
+                <td>75.76</td>
                 <td>92.28</td>
-                <td>84.32</td>
-                <td>69.54</td>
-                <td>0.94</td>
-                <td>79.68</td>
-                <td>88.84</td>
-                <td>21.87</td>
+                <td>85.25</td>
+                <td>69.73</td>
+                <td><b>0.95</b></td>
+                <td>80.04</td>
+                <td>89.42</td>
+                <td>21.13</td>
                 <td><b>6</b></td>
               </tr>
               <tr style="background-color: rgba(110, 194, 134, 0.15);">
                 <td>MC + Q<sub>2</sub>E + ASR</td>
-                <td><b>10.37</b></td>
-                <td><b>48.42</b></td>
-                <td><b>79.06</b></td>
-                <td><b>93.44</b></td>
-                <td><b>87.80</b></td>
-                <td><b>72.66</b></td>
+                <td><b>10.32</b></td>
+                <td><b>49.00</b></td>
+                <td><b>79.60</b></td>
+                <td><b>93.05</b></td>
+                <td><b>88.73</b></td>
+                <td><b>73.09</b></td>
                 <td><b>0.95</b></td>
-                <td><b>82.89</b></td>
-                <td><b>91.10</b></td>
-                <td><b>17.14</b></td>
+                <td><b>83.24</b></td>
+                <td><b>91.20</b></td>
+                <td><b>16.44</b></td>
                 <td><b>6</b></td>
               </tr>
 
-              
+
               <tr style="background-color: rgba(110, 194, 134, 0.15);">
                 <td>IV2 + Q<sub>2</sub>E</td>
                 <td>9.54</td>
@@ -484,20 +489,20 @@
                 <td>42.81</td>
                 <td><b>6</b></td>
               </tr>
-              
+
 
               <tr style="background-color: rgba(255, 208, 80, 0.15);">
                 <td>MC</td>
-                <td>43.92</td>
-                <td>67.94</td>
+                <td>43.52</td>
+                <td>69.05</td>
                 <td>76.88</td>
-                <td>44.02</td>
-                <td>13.63</td>
+                <td>43.62</td>
+                <td>13.85</td>
                 <td>7.71</td>
                 <td>0.54</td>
-                <td>59.79</td>
-                <td>54.38</td>
-                <td>19.92</td>
+                <td>59.72</td>
+                <td>54.27</td>
+                <td><u>20.29</u></td>
                 <td>2</td>
               </tr>
               <tr style="background-color: rgba(255, 208, 80, 0.15);">
@@ -511,36 +516,36 @@
                 <td><u>0.62</u></td>
                 <td><u>66.07</u></td>
                 <td><u>61.62</u></td>
-                <td><u>25.12</u></td>
+                <td>25.12</td>
                 <td><u><b>1</b></u></td>
               </tr>
 
               <tr style="background-color: rgba(255, 208, 80, 0.15);">
                 <td>MC + Q<sub>2</sub>E</td>
-                <td>45.03</td>
-                <td>70.05</td>
-                <td>79.10</td>
-                <td>45.13</td>
-                <td>14.05</td>
-                <td>7.93</td>
+                <td>44.52</td>
+                <td>71.26</td>
+                <td>79.40</td>
+                <td>44.62</td>
+                <td>14.29</td>
+                <td>7.96</td>
                 <td>0.56</td>
-                <td>61.57</td>
-                <td>56.02</td>
-                <td>17.88</td>
+                <td>61.51</td>
+                <td>55.84</td>
+                <td>17.91</td>
                 <td>2</td>
               </tr>
               <tr style="background-color: rgba(255, 208, 80, 0.15);">
                 <td>MC + Q<sub>2</sub>E + ASR</td>
-                <td>46.13</td>
-                <td>73.47</td>
-                <td>81.41</td>
                 <td>46.23</td>
-                <td>14.73</td>
-                <td>8.16</td>
+                <td>73.37</td>
+                <td>81.71</td>
+                <td>46.33</td>
+                <td>14.71</td>
+                <td>8.19</td>
                 <td>0.58</td>
-                <td>63.48</td>
-                <td>57.77</td>
-                <td>18.54</td>
+                <td>63.59</td>
+                <td>57.83</td>
+                <td>18.73</td>
                 <td>2</td>
               </tr>
               <tr style="background-color: rgba(255, 208, 80, 0.15);">
@@ -574,7 +579,8 @@
             </tbody>
           </table>
           <p style="text-align:center">
-            The best score for each dataset is <b>in bold</b> and the best in baselines is <u>underlined</u>.
+            The best score for each dataset is <b>in bold</b> and the best in baselines is <u>underlined</u>.<br>
+            More ablation results are presented in the paper.
             <!--"-" means the answer of MLLM is meaningless or in wrong format. -->
           </p>
         </div>
