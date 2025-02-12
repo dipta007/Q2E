@@ -16,7 +16,7 @@ This repo contains all the data and code related to the paper Q<sub>2</sub>E: <i
 
 ## Installation
 > [!CAUTION]
-> Installation was tested on CUDA 12.4 and A100. If you see errors, please open a new issue.
+> Installation was tested on CUDA 12.4 and A100. If you see errors, please use the [Docker](#using-docker) instructions.
 
 To run the code in this project, first, create a Python virtual environment using uv. To install `uv`, follow the [UV Installation Guide](https://docs.astral.sh/uv/getting-started/installation/).
 
