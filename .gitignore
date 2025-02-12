@@ -193,3 +193,4 @@ pyrightconfig.json
 /raw_data/
 
 wandb
+_site/
