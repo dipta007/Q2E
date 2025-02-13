@@ -32,7 +32,7 @@ uv sync
 ```bash
 source .venv/bin/activate
 gdown --fuzzy https://drive.google.com/file/d/1qcr9ZqHptibJKHOwyOrjjbwQTjcsp_Vk/view
-tar -xzvf data.tar.gz
+tar -xzvf data.tgz
 ```
 ### Videos (Optional)
 > [!NOTE]
