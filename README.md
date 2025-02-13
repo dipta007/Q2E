@@ -6,8 +6,10 @@ This repo contains all the data and code related to the paper Q<sub>2</sub>E: <i
 
 ## Outlines
 - [Installation](#installation)
-- [Download Pre-Trained Models](#download-pre-trained-models)
-- [Download Pre-Generated Data](#download-pre-generated-data)
+- [Data](#data)
+    - [Pre-Generated Data](#pre-generated-data)
+    - [Videos (Optional)](#videos-optional)
+    - [Pre-Trained Models](#pre-trained-models)
 - [Evaluation](#evaluation)
 - [Data Generation Scripts](#data-generation-scripts)
 - [Use Your Own Data](#use-your-own-data)
@@ -25,7 +27,26 @@ uv venv --seed --python 3.10
 uv sync
 ```
 
-## Download Pre-Trained Models
+## Data
+### Pre-Generated Data
+```bash
+source .venv/bin/activate
+gdown --fuzzy https://drive.google.com/file/d/1qcr9ZqHptibJKHOwyOrjjbwQTjcsp_Vk/view
+tar -xzvf data.tar.gz
+```
+### Videos (Optional)
+> [!NOTE]
+> You don't need the videos to run the evaluation. But if you want to generate the data from scratch, you need the videos.
+
+Due to the redistribution policy, we cannot provide the videos directly. However, you can download the videos using the following instructions.
+
+1. Download the [MSR-VTT](https://www.microsoft.com/en-us/research/publication/msr-vtt-a-large-video-description-dataset-for-bridging-video-and-language/) videos, and save them in the `data/MSR-VTT-1kA/videos` directory.
+2. Download the [MultiVENT](https://proceedings.neurips.cc/paper_files/paper/2023/file/a054ff49751dbc991ec30ae479397c3d-Paper-Datasets_and_Benchmarks.pdf) videos, and save them in the `data/MultiVENT/videos` directory.
+
+### Pre-Trained Models
+> [!NOTE]
+> Unlike videos, you need the models to run the evaluation.
+
 Due to different licensing agreements, we cannot provide the models directly. However, you can download the models using the following commands.
 ```bash
 mkdir -p data/models/MultiCLIP
@@ -34,13 +55,6 @@ wget -O data/models/MultiCLIP/open_clip_pytorch_model.bin https://huggingface.co
 mkdir -p data/models/InternVideo2
 ```
 Download the InternVideo2 model from [here](https://huggingface.co/OpenGVLab/InternVideo2-Stage2_1B-224p-f4) and save it as `data/models/InternVideo2/InternVideo2-stage2_1b-224p-f4.pt`.
-
-## Download Pre-Generated Data (with **VIDEOS**)
-```bash
-source .venv/bin/activate
-gdown --fuzzy https://drive.google.com/file/d/1PkyLH5EUoYttBqpuB_xFA7HNmbC5GtRk/view?usp=drive_link
-tar -xzvf data.tar.gz
-```
 
 ## Evaluation
 Data is generated and already populated in the `data` directory. To generate the data, follow the instructions in the [Data Generation](#data-generation) section.
