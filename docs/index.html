@@ -275,7 +275,7 @@
 
             <centering>
               <div style="text-align: center;">
-                <img id="teaser" width="70%" src="static/images/intro_final.png">
+                <img id="teaser" style="max-height: 50em !important" src="static/images/intro_final.png">
               </div>
             </centering>
           </div>
@@ -302,19 +302,7 @@
 
           <div class="content has-text-justified">
             <p>
-              Foundation models have demonstrated remarkable capabilities in performing zero-shot tasks without the need
-              for dataset-specific fine-tuning. However, due to differences in domain distributions, most text-to-video
-              retrieval systems still rely on such fine-tuning. Recent advancements in large language models (LLMs) and
-              vision-language models (VLMs) have shown impressive proficiency in understanding and applying new
-              knowledge. In this work, we present Q<sub>2</sub>E: a drop-in text-to-video retrieval method adaptable to
-              any
-              dataset, domain, LLM, or VLM without requiring fine-tuning. Our approach leverages the embedded world
-              knowledge in LLMs and VLMs to decompose queries and generate contextualized frame captions. We also adopt
-              entropy-based fusion scoring for zero-shot fusion of multiple ranks. Through evaluations on two diverse
-              datasets and multiple retrieval metrics, we demonstrate that Q<sub>2</sub>E outperforms several
-              state-of-the-art
-              baselines, highlighting the advantages of event-based decomposition in text-to-video retrieval systems. We
-              have open-sourced the code and data for future research.
+              Foundation models have demonstrated remarkable capabilities in performing zero-shot tasks without the need for dataset-specific fine-tuning. However, due to differences in the complexity of datasets, most text-to-video retrieval systems still rely on fine-tuning. Recent advancements in large language models (LLMs) and vision-language models (VLMs) have shown impressive proficiency in understanding and applying new knowledge. This work presents Q<sub>2</sub>E: a  <u>Q</u>uery-to-<u>E</u>vent decomposition for zero-shot multilingual text-to-video retrieval method adaptable across datasets, domains, LLMs, or VLMs. Our approach demonstrates that we can enhance the understanding of otherwise overly simplified human queries by decomposing the query using the knowledge embedded in LLMs and VLMs. We also adopt entropy-based fusion scoring that helps in zero-shot fusion of multiple ranks. Through evaluations on two diverse datasets and multiple retrieval metrics, we demonstrate that Q<sub>2</sub>E outperforms several state-of-the-art baselines, highlighting the advantages of event-based decomposition in text-to-video retrieval systems. Further evaluation demonstrates that integrating audio information can significantly improve text-to-video retrieval.
               </li>
               </ol>
             </p>
@@ -343,11 +331,11 @@
             <centering>
               <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
                 <div style="flex: 1; display: flex; justify-content: center; width: 150vh;">
-                  <img src="static/images/main_final.png">
+                  <img src="static/images/main_with_asr.png">
                 </div>
-                <div style="flex: 1; display: flex; justify-content: center;">
+                <!-- <div style="flex: 1; display: flex; justify-content: center;">
                   <img src="static/images/asr_final.png">
-                </div>
+                </div> -->
               </div>
             </centering>
 
@@ -360,7 +348,7 @@
   <section class="hero is-light is-small">
     <div class="hero-body has-text-centered">
       <h2 class="title is-3">
-        Results & Leaderboard</h2>
+        Results</h2>
     </div>
   </section>
 
