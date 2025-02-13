@@ -8,9 +8,11 @@ This repo contains all the data and code related to the paper Q<sub>2</sub>E: <i
 - [Installation](#installation)
 - [Data](#data)
     - [Pre-Generated Data](#pre-generated-data)
-    - [Videos (Optional)](#videos-optional)
+    - [Videos](#videos)
     - [Pre-Trained Models](#pre-trained-models)
 - [Evaluation](#evaluation)
+    - [MultiVENT](#evaluating-multivent)
+    - [MSR-VTT-1kA](#evaluating-msr-vtt-1ka)
 - [Data Generation Scripts](#data-generation-scripts)
 - [Use Your Own Data](#use-your-own-data)
 - [Using Docker](#using-docker)
@@ -34,37 +36,33 @@ source .venv/bin/activate
 gdown --fuzzy https://drive.google.com/file/d/1qcr9ZqHptibJKHOwyOrjjbwQTjcsp_Vk/view
 tar -xzvf data.tgz
 ```
-### Videos (Optional)
-> [!NOTE]
-> You don't need the videos to run the evaluation. But if you want to generate the data from scratch, you need the videos.
+### Videos
 
 Due to the redistribution policy, we cannot provide the videos directly. However, you can download the videos using the following instructions.
 
-1. Download the [MSR-VTT](https://www.microsoft.com/en-us/research/publication/msr-vtt-a-large-video-description-dataset-for-bridging-video-and-language/) videos, and save them in the `data/MSR-VTT-1kA/videos` directory.
-2. Download the [MultiVENT](https://proceedings.neurips.cc/paper_files/paper/2023/file/a054ff49751dbc991ec30ae479397c3d-Paper-Datasets_and_Benchmarks.pdf) videos, and save them in the `data/MultiVENT/videos` directory.
+1. Download the [MultiVENT](https://proceedings.neurips.cc/paper_files/paper/2023/file/a054ff49751dbc991ec30ae479397c3d-Paper-Datasets_and_Benchmarks.pdf) videos, and save them in the `data/MultiVENT/videos` directory.
+2. Download the [MSR-VTT](https://www.microsoft.com/en-us/research/publication/msr-vtt-a-large-video-description-dataset-for-bridging-video-and-language/) videos, and save them in the `data/MSR-VTT-1kA/videos` directory.
 
 ### Pre-Trained Models
-> [!NOTE]
-> Unlike videos, you need the models to run the evaluation.
-
-Due to different licensing agreements, we cannot provide the models directly. However, you can download the models using the following commands.
 ```bash
 mkdir -p data/models/MultiCLIP
 wget -O data/models/MultiCLIP/open_clip_pytorch_model.bin https://huggingface.co/laion/CLIP-ViT-H-14-frozen-xlm-roberta-large-laion5B-s13B-b90k/resolve/main/open_clip_pytorch_model.bin
 
 mkdir -p data/models/InternVideo2
 ```
-Download the InternVideo2 model from [here](https://huggingface.co/OpenGVLab/InternVideo2-Stage2_1B-224p-f4) and save it as `data/models/InternVideo2/InternVideo2-stage2_1b-224p-f4.pt`.
+Due to different licensing agreements, we cannot provide the InternVideo2 model directly. However, you can download the InternVideo2 model from [here](https://huggingface.co/OpenGVLab/InternVideo2-Stage2_1B-224p-f4) and save it as `data/models/InternVideo2/InternVideo2-stage2_1b-224p-f4.pt`.
 
 ## Evaluation
 Data is generated and already populated in the `data` directory. To generate the data, follow the instructions in the [Data Generation](#data-generation) section.
-### [MSR-VTT-1kA](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/06/cvpr16.msr-vtt.tmei_-1.pdf)
-```bash
-bash scripts/eval_msrvtt.sh
-```
-### [MultiVENT](https://proceedings.neurips.cc/paper_files/paper/2023/file/a054ff49751dbc991ec30ae479397c3d-Paper-Datasets_and_Benchmarks.pdf)
+
+### Evaluating [MultiVENT](https://proceedings.neurips.cc/paper_files/paper/2023/file/a054ff49751dbc991ec30ae479397c3d-Paper-Datasets_and_Benchmarks.pdf)
 ```bash
 bash scripts/eval_multivent.sh 
+```
+
+### Evaluating [MSR-VTT-1kA](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/06/cvpr16.msr-vtt.tmei_-1.pdf)
+```bash
+bash scripts/eval_msrvtt.sh
 ```
 
 ## Data Generation Scripts
