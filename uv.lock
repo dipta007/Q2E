@@ -728,6 +728,20 @@ wheels = [
 ]
 
 [[package]]
+name = "gpu-wait"
+version = "0.4.9"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "click" },
+    { name = "psutil" },
+    { name = "pynvml" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/34/33/abb83163abaafcf9c33b2bebc9e7663db63914a2b193419da6c92f1e4b5c/gpu_wait-0.4.9.tar.gz", hash = "sha256:b4f103fd9fd06ba4b6d1cac5fc5c14a4a6d060dd5c4d4ff45426a452c0f1ea59", size = 3679 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8d/10/888c27e5ca3b9f0e6c987e4dc9e74081c77391db89849a25b88a4c08b8ac/gpu_wait-0.4.9-py3-none-any.whl", hash = "sha256:f4dbda67370ce9baeb17b12784eab6e96162b6fba59d4f9cee678ae7ac648eb2", size = 4530 },
+]
+
+[[package]]
 name = "gpustat"
 version = "1.1.1"
 source = { registry = "https://pypi.org/simple" }
@@ -2427,6 +2441,7 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "gpu-wait" },
     { name = "gpustat" },
     { name = "ruff" },
 ]
@@ -2461,6 +2476,7 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "gpu-wait", specifier = ">=0.4.9" },
     { name = "gpustat", specifier = ">=1.1.1" },
     { name = "ruff", specifier = ">=0.9.5" },
 ]
@@ -2972,11 +2988,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/c7/54/0035186f45894533c
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a1/76/b8132f148890427715f9ab2776b71e9c3d736d6406ac80eeccb0948fe8a0/timm-1.0.14-py3-none-any.whl", hash = "sha256:16653695ff420cf4e87e384c8654f2ee6be2070bcb4a0e840b5c6764ee0547ec", size = 2354063 },
 ]
-
-[[package]]
-name = "tmp"
-version = "0.1.0"
-source = { virtual = "tmp" }
 
 [[package]]
 name = "tokenizers"

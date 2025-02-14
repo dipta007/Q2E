@@ -33,6 +33,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "gpu-wait>=0.4.9",
     "gpustat>=1.1.1",
     "ruff>=0.9.5",
 ]
