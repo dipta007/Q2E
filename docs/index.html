@@ -201,7 +201,8 @@
                 </span>
 
                 <span class="link-block">
-                  <a href="https://drive.google.com/file/d/1qcr9ZqHptibJKHOwyOrjjbwQTjcsp_Vk/view" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <a href="https://drive.google.com/file/d/1qcr9ZqHptibJKHOwyOrjjbwQTjcsp_Vk/view" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fas fa-database"></i>
                     </span>
@@ -302,8 +303,20 @@
 
           <div class="content has-text-justified">
             <p>
-              Recent approaches have shown impressive proficiency in extracting and leveraging parametric knowledge from large language models (LLMs) and vision-language models (VLMs). In this work, we consider how we can improve the identification and retrieval of videos related to real world and complex events by automatically extracting latent parametric knowledge about those events. We present Q<sub>2</sub>E: <b><u>Q</u></b>uery-to-<b><u>E</u></b>vent decomposition for
-              zero-shot multilingual video-text retrieval, adaptable across datasets, domains, LLMs, or VLMs. Our approach demonstrates that we can enhance the understanding of otherwise overly simplified human queries by decomposing the query using the knowledge embedded in LLMs and VLMs. We additionally show how to apply our approach to both visual and speech-based inputs. To combine this varied multimodal knowledge, we adopt entropy-based fusion scoring for zero-shot fusion. Through evaluations on two diverse datasets and multiple retrieval metrics, we demonstrate that Q<sub>2</sub>E outperforms several state-of-the-art baselines. Our evaluation also shows that integrating audio information can significantly improve text-to-video retrieval. We have released (anonymized) code and data for future research.<a href="https://anonymous.4open.science/w/Q2E-DE5D/"><sup>1</sup></a>
+              Recent approaches have shown impressive proficiency in extracting and leveraging parametric knowledge from
+              large language models (LLMs) and vision-language models (VLMs). In this work, we consider how we can
+              improve the identification and retrieval of videos related to real world and complex events by
+              automatically extracting latent parametric knowledge about those events. We present Q<sub>2</sub>E:
+              <b><u>Q</u></b>uery-to-<b><u>E</u></b>vent decomposition for
+              zero-shot multilingual video-text retrieval, adaptable across datasets, domains, LLMs, or VLMs. Our
+              approach demonstrates that we can enhance the understanding of otherwise overly simplified human queries
+              by decomposing the query using the knowledge embedded in LLMs and VLMs. We additionally show how to apply
+              our approach to both visual and speech-based inputs. To combine this varied multimodal knowledge, we adopt
+              entropy-based fusion scoring for zero-shot fusion. Through evaluations on two diverse datasets and
+              multiple retrieval metrics, we demonstrate that Q<sub>2</sub>E outperforms several state-of-the-art
+              baselines. Our evaluation also shows that integrating audio information can significantly improve
+              text-to-video retrieval. We have released (anonymized) code and data for future research.<a
+                href="https://anonymous.4open.science/w/Q2E-DE5D/"><sup>1</sup></a>
               </li>
               </ol>
             </p>
@@ -337,6 +350,119 @@
                 <!-- <div style="flex: 1; display: flex; justify-content: center;">
                   <img src="static/images/asr_final.png">
                 </div> -->
+              </div>
+            </centering>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!----------------------------------------- Sample Data --------------------------------------------------->
+  <section class="hero is-light is-small">
+    <div class="hero-body has-text-centered">
+      <h2 class="title is-3">
+        Sample Data</h2>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+
+          <div class="content has-text-justified">
+
+            <centering>
+              <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                <h3><b>Query:</b> November 30 earthquake in South Central Alaska 2018</h3>
+                <iframe width="708" height="400" src="https://www.youtube.com/embed/6SReDtBCT-Y?si=4pOUH6PfINos_T6S"
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                <h3>Query Decomposition</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                  <thead>
+                    <tr style="background-color: #f5f5f5;">
+                      <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">Prequel</th>
+                      <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">Current</th>
+                      <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">Sequel</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">Buildings shaking and
+                        swaying due to the earthquake in Anchorage, Alaska, on November 30, 2018</td>
+                      <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">Buildings shaking and
+                        crumbling during the 30 November 2018 earthquake in Anchorage, Alaska, South Central Alaska</td>
+                      <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">Buildings crumbling or
+                        collapsing during the November 30, 2018 earthquake in Anchorage, Alaska</td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">People running out of
+                        buildings and evacuating the area in Anchorage, Alaska during the earthquake on
+                        November 30, 2018</td>
+                      <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">People running out of
+                        buildings and evacuating the area during the 30 November 2018 Anchorage, Alaska earthquake</td>
+                      <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">People running for cover
+                        or evacuating buildings during the November 30, 2018 earthquake in Anchorage, Alaska
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">Cars stopped on the road
+                        as the earthquake strikes in Anchorage, Alaska on November 30, 2018 at</td>
+                      <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">Emergency responders
+                        rushing to the scene after the 2018 Anchorage, Alaska earthquake on November 30, 2018</td>
+                      <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">Emergency vehicles rushing
+                        to the scene of the 2018 Anchorage, Alaska earthquake on November 30, 2018
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">Debris and objects falling
+                        from shelves and ceilings during the 30 November 2018 Anchorage, Alaska earthquake</td>
+                      <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">Debris falling from
+                        buildings and damaging streets during the November 30, 2018 earthquake in
+                        Anchorage, South Central Alaska</td>
+                      <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">Cracks forming in roads
+                        and highways in Anchorage, Alaska, South Central Alaska, after the 30 November 2018 earthquake
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">Emergency responders
+                        rushing to the scene to assist with evacuation and relief efforts after the 30 November 2018
+                        earthquake in Anchorage, Alaska, South Central Alaska</td>
+                      <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">Cars stopped or abandoned
+                        on the road in Anchorage, Alaska, South Central Alaska due to the earthquake on
+                        November 30, 2018</td>
+                      <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">Debris falling from
+                        damaged structures during the 30 November 2018 earthquake in Anchorage, Alaska</td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+                <h3>Video Decomposition*</h3>
+                <small>* Frame captions were omitted for readability</small>
+                <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                  <thead>
+                      <tr style="background-color: #f5f5f5;">
+                          <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">Video Caption</th>
+                          <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">ASR Transcript</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">
+                              A 7.0 magnitude earthquake struck Anchorage, Alaska, causing significant damage and disruption to the city's infrastructure. The quake, which occurred on a Friday morning, triggered a tsunami warning that was later canceled, and resulted in major infrastructure damage, fires, and power outages affecting up to a third of the local power company's customers. The earthquake was followed by over 30 aftershocks in the subsequent three hours, with magnitudes ranging from 2.7 to 5.7. The event prompted Alaska's Governor to issue a disaster declaration and tour the damage from the air with the state's National Guard. The video depicts various scenes of the earthquake's impact, including damaged roadways, landslides, and emergency response efforts, as well as serene landscapes and news reports providing updates on the situation. The footage also shows the effects of the earthquake on local residents, with home security cameras capturing the disturbance and damage within household settings. Overall, the video provides a comprehensive view of the earthquake's impact and the subsequent response efforts in Anchorage, Alaska.
+                          </td>
+                          <td style="padding: 12px; border: 1px solid #ddd; vertical-align: top;">
+                              A 7.0 magnitude earthquake hit Anchorage, Alaska on Friday morning, causing significant damage. A local resident's home security system captured the sounds of the quake, which showed lights in the distance suddenly disappearing, followed by multiple bright flashes. The quake hit at about 8:30 a.m. local time. A tsunami warning was issued, but it was canceled shortly after. The Anchorage Police Department reported major infrastructure damage across the city, with at least three fires breaking out and videos showing significant damage to roadways. The local power company stated that up to a third of its customers were without power, a major concern in a region where high temperatures are in the low 20s to mid 30s. In the three hours following the earthquake, the U.S. Geological Survey recorded over 30 aftershocks with magnitudes ranging from 2.7 to 5.7. Aftershocks are common in Alaska. The Anchorage region is home to more than half of the state's population. Alaska's Governor, Bill Walker, issued a disaster declaration before touring the damage with the state's National Guard.
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
               </div>
             </centering>
 
@@ -593,7 +719,7 @@
 
       <h2 class="title">BibTeX</h2>
       <pre><code>
-        Will be updated after the paper is published.
+        Will be updated after publication.
     </code></pre>
     </div>
   </section>
