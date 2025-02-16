@@ -30,7 +30,7 @@ def fusion_exp_entropy(args, results, params, queries, video_ids):
     for param, data in zip(params, results):
         curr_entropy = entropy(data)
 
-        sim_matrix += torch.exp(curr_entropy) * data
+        sim_matrix += torch.exp(-curr_entropy) * data
 
     return min_max_normalize(sim_matrix)
 
