@@ -167,7 +167,7 @@ pytz==2025.1
 pyyaml==6.0.2
 pyzmq==26.2.1
 ragatouille==0.0.8.post4
-ray==2.42.0
+ray==2.43.0
 referencing==0.36.2
 regex==2024.11.6
 requests==2.32.3
