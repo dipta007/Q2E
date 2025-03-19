@@ -214,7 +214,7 @@ ujson==5.10.0
 urllib3==2.3.0
 uvicorn==0.34.0
 uvloop==0.21.0
-vllm==0.6.4.post1
+vllm==0.8.0
 voyager==2.1.0
 wandb==0.19.6
 watchfiles==1.0.4
