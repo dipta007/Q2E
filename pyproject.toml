@@ -22,7 +22,7 @@ dependencies = [
     "ragatouille>=0.0.8.post4",
     "scenedetect>=0.6.5.2",
     "torchaudio>=2.5.0",
-    "torch==2.5.1",
+    "torch==2.7.0",
     "torchmetrics>=1.6.0",
     "torchvision>=0.20.0",
     "tqdm<=4.66.5",
