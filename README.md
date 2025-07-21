@@ -3,6 +3,7 @@ This repo contains all the data and code related to the paper Q<sub>2</sub>E: <i
 
 ## 🔥News:
 * [14 Feb, 2025] Paper submitted to ARR February cycle.
+* [24 July, 2025] Paper will be presented on the [MAGMaR](https://nlp.jhu.edu/magmar/) workshop.
 
 ## Outlines
 - [Installation](#installation)
@@ -164,5 +165,10 @@ uv sync
 ## Citation
 If you find this code useful for your research, please consider citing:
 ```
-Filled up after publication
+@article{dipta2025q2e,
+  title={Q2E: Query-to-Event Decomposition for Zero-Shot Multilingual Text-to-Video Retrieval},
+  author={Dipta, Shubhashis Roy and Ferraro, Francis},
+  journal={arXiv preprint arXiv:2506.10202},
+  year={2025}
+}
 ```
