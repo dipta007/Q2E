@@ -1,8 +1,37 @@
-# Q<sub>2</sub>E
-This repo contains all the data and code related to the paper Q<sub>2</sub>E: <ins>**Q**</ins>uery-to-<ins>**E**</ins>vent Decomposition for Zero-Shot Multilingual Text-to-Video Retrieval
+## Q<sub>2</sub>E: <ins>**Q**</ins>uery-to-<ins>**E**</ins>vent Decomposition for Zero-Shot Multilingual Text-to-Video Retrieval
+
+
+<div style="text-align: center;">
+    <span style="
+        display: inline-block;
+        background: #ffe082;
+        color: #b12a00;
+        font-weight: bold;
+        font-size: 1em;
+        border-radius: 10px;
+        padding: 0.25em 1em;
+        margin: 0.5em auto;
+        box-shadow: 0 0 6px 1px #ffd54f70;
+        letter-spacing: 1px;
+        border: 2px solid #ffb300;
+    ">
+        🔥 Accepted at <span style="color:#1565c0;">AACL 2025</span> 🔥
+    </span>
+</div>
+
+<div style="text-align: center">
+<a target="_blank" href="https://arxiv.org/abs/2506.10202">
+<img style="height:22pt" src="https://img.shields.io/badge/-Paper-red?style=flat&logo=arxiv"></a>
+<a target="_blank" href="https://github.com/dipta007/Q2E">
+<img style="height:22pt" src="https://img.shields.io/badge/-Code-green?style=flat&logo=github"></a>
+<a target="_blank" href="https://dipta007.github.io/Q2E/">
+<img style="height:22pt" src="https://img.shields.io/badge/-🌐%20Website-blue?style=flat"></a>
+<a target="_blank" href="https://huggingface.co/collections/dipta007/q2e-query-to-event-decomposition-for-zero-shot-multilingual">
+<img style="height:22pt" src="https://img.shields.io/badge/-🤗%20Dataset-red?style=flat"></a>
+</div>
 
 ## 🔥News:
-* [14 Feb, 2025] Paper submitted to ARR February cycle.
+* [25 Oct, 2025] Paper accepted at AACL 2025
 * [24 July, 2025] Paper will be presented on the [MAGMaR](https://nlp.jhu.edu/magmar/) workshop.
 
 ## Outlines
