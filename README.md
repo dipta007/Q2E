@@ -9,8 +9,8 @@
 ## 🏆 **Accepted at AACL 2025** 🏆
 
 [![Paper](https://img.shields.io/badge/📄%20Paper-arXiv-red?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2506.10202)
-[![Code](https://img.shields.io/badge/💻%20Code-GitHub-green?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dipta007/Q2E)
-[![Website](https://img.shields.io/badge/🌐%20Website-Demo-blue?style=for-the-badge&logo=firefox&logoColor=white)](https://dipta007.github.io/Q2E/)
+<!-- [![Code](https://img.shields.io/badge/💻%20Code-GitHub-gree}n?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dipta007/Q2E) -->
+[![Website](https://img.shields.io/badge/🌐%20Project-Page-blue?style=for-the-badge&logo=firefox&logoColor=white)](https://dipta007.github.io/Q2E/)
 [![Dataset](https://img.shields.io/badge/🤗%20Dataset-HuggingFace-red?style=for-the-badge&logo=huggingface&logoColor=white)](https://huggingface.co/collections/dipta007/q2e-query-to-event-decomposition-for-zero-shot-multilingual)
 
 </div>
