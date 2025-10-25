@@ -26,18 +26,18 @@
 
 | Section | Description |
 |----------|-------------|
-| 🚀 [Installation](#installation) | Setup and environment configuration |
-| 📊 [Data](#data) | Datasets, models, and pre-generated data |
-| 🧪 [Evaluation](#evaluation) | Running experiments on MultiVENT & MSR-VTT-1kA |
-| 🔧 [Data Generation](#data-generation-scripts) | Scripts for generating training data |
-| 🎯 [Use Your Own Data](#use-your-own-data) | Custom dataset integration |
-| 🐳 [Docker](#using-docker) | Containerized setup |
-| 📚 [Citation](#citation) | How to cite this work |
+| 🚀 [Installation](#-installation) | Setup and environment configuration |
+| 📊 [Data](#-data) | Datasets, models, and pre-generated data |
+| 🧪 [Evaluation](#-evaluation) | Running experiments on MultiVENT & MSR-VTT-1kA |
+| 🔧 [Data Generation Scripts](#-data-generation-scripts) | Scripts for generating training data |
+| 🎯 [Use Your Own Data](#-use-your-own-data) | Custom dataset integration |
+| 🐳 [Using Docker](#-using-docker) | Containerized setup |
+| 📚 [Citation](#-citation) | How to cite this work |
 
 ## 🚀 Installation
 
 > ⚠️ **System Requirements**  
-> Tested on CUDA 12.4 and A100. If you encounter issues, please use the [Docker setup](#using-docker).
+> Tested on CUDA 12.4 and A100. If you encounter issues, please use the [Docker setup](#-using-docker).
 
 ### Quick Start
 
@@ -94,7 +94,7 @@ mkdir -p data/models/InternVideo2
 
 ## 🧪 Evaluation
 
-> 📋 **Prerequisites**: Ensure data is generated and populated in the `data` directory. See [Data Generation](#data-generation-scripts) for setup instructions.
+> 📋 **Prerequisites**: Ensure data is generated and populated in the `data` directory. See [Data Generation Scripts](#-data-generation-scripts) for setup instructions.
 
 ### 🎯 Quick Evaluation
 
@@ -115,7 +115,7 @@ bash scripts/eval_msrvtt.sh
 
 ## 🔧 Data Generation Scripts
 
-> 💡 **Tip**: Pre-generated data is available in the [Pre-Generated Data](#pre-generated-data-recommended) section for quick evaluation.
+> 💡 **Tip**: Pre-generated data is available in the [Pre-Generated Data](#-pre-generated-data-recommended) section for quick evaluation.
 
 ### 📋 Available Scripts
 
