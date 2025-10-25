@@ -1,119 +1,163 @@
-## Q<sub>2</sub>E: <ins>**Q**</ins>uery-to-<ins>**E**</ins>vent Decomposition for Zero-Shot Multilingual Text-to-Video Retrieval
+# 🎯 Q<sub>2</sub>E: <ins>**Q**</ins>uery-to-<ins>**E**</ins>vent Decomposition
 
+> **Zero-Shot Multilingual Text-to-Video Retrieval**
 
-<div style="text-align: center;">
-    <span style="
-        display: inline-block;
-        background: #ffe082;
-        color: #b12a00;
-        font-weight: bold;
-        font-size: 1em;
-        border-radius: 10px;
-        padding: 0.25em 1em;
-        margin: 0.5em auto;
-        box-shadow: 0 0 6px 1px #ffd54f70;
-        letter-spacing: 1px;
-        border: 2px solid #ffb300;
-    ">
-        🔥 Accepted at <span style="color:#1565c0;">AACL 2025</span> 🔥
-    </span>
+---
+
+<div align="center">
+
+## 🏆 **Accepted at AACL 2025** 🏆
+
+[![Paper](https://img.shields.io/badge/📄%20Paper-arXiv-red?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2506.10202)
+[![Code](https://img.shields.io/badge/💻%20Code-GitHub-green?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dipta007/Q2E)
+[![Website](https://img.shields.io/badge/🌐%20Website-Demo-blue?style=for-the-badge&logo=firefox&logoColor=white)](https://dipta007.github.io/Q2E/)
+[![Dataset](https://img.shields.io/badge/🤗%20Dataset-HuggingFace-red?style=for-the-badge&logo=huggingface&logoColor=white)](https://huggingface.co/collections/dipta007/q2e-query-to-event-decomposition-for-zero-shot-multilingual)
+
 </div>
 
-<div style="text-align: center">
-<a target="_blank" href="https://arxiv.org/abs/2506.10202">
-<img style="height:22pt" src="https://img.shields.io/badge/-Paper-red?style=flat&logo=arxiv"></a>
-<a target="_blank" href="https://github.com/dipta007/Q2E">
-<img style="height:22pt" src="https://img.shields.io/badge/-Code-green?style=flat&logo=github"></a>
-<a target="_blank" href="https://dipta007.github.io/Q2E/">
-<img style="height:22pt" src="https://img.shields.io/badge/-🌐%20Website-blue?style=flat"></a>
-<a target="_blank" href="https://huggingface.co/collections/dipta007/q2e-query-to-event-decomposition-for-zero-shot-multilingual">
-<img style="height:22pt" src="https://img.shields.io/badge/-🤗%20Dataset-red?style=flat"></a>
-</div>
+## 📢 Latest News
 
-## 🔥News:
-* [25 Oct, 2025] Paper accepted at AACL 2025
-* [24 July, 2025] Paper will be presented on the [MAGMaR](https://nlp.jhu.edu/magmar/) workshop.
+| Date | News |
+|------|-------|
+| 🎉 **Oct 25, 2025** | Paper accepted at **AACL 2025** |
+| 📅 **Jul 24, 2025** | Paper will be presented at [**MAGMaR Workshop**](https://nlp.jhu.edu/magmar/) |
 
-## Outlines
-- [Installation](#installation)
-- [Data](#data)
-    - [Pre-Generated Data](#pre-generated-data)
-    - [Videos](#videos)
-    - [Pre-Trained Models](#pre-trained-models)
-- [Evaluation](#evaluation)
-    - [MultiVENT](#evaluating-multivent)
-    - [MSR-VTT-1kA](#evaluating-msr-vtt-1ka)
-- [Data Generation Scripts](#data-generation-scripts)
-- [Use Your Own Data](#use-your-own-data)
-- [Using Docker](#using-docker)
-- [Citation](#citation)
+## 📋 Table of Contents
 
-## Installation
-> [!CAUTION]
-> Installation was tested on CUDA 12.4 and A100. If you see errors, please use the [Docker](#using-docker) instructions.
+| Section | Description |
+|----------|-------------|
+| 🚀 [Installation](#installation) | Setup and environment configuration |
+| 📊 [Data](#data) | Datasets, models, and pre-generated data |
+| 🧪 [Evaluation](#evaluation) | Running experiments on MultiVENT & MSR-VTT-1kA |
+| 🔧 [Data Generation](#data-generation-scripts) | Scripts for generating training data |
+| 🎯 [Use Your Own Data](#use-your-own-data) | Custom dataset integration |
+| 🐳 [Docker](#using-docker) | Containerized setup |
+| 📚 [Citation](#citation) | How to cite this work |
 
-To run the code in this project, first, create a Python virtual environment using uv. To install `uv`, follow the [UV Installation Guide](https://docs.astral.sh/uv/getting-started/installation/).
+## 🚀 Installation
 
-```bash
-uv venv --seed --python 3.10
-uv sync
-```
+> ⚠️ **System Requirements**  
+> Tested on CUDA 12.4 and A100. If you encounter issues, please use the [Docker setup](#using-docker).
 
-## Data
-### Pre-Generated Data
+### Quick Start
+
+1. **Install UV** (if not already installed):
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
+
+2. **Setup Environment**:
+   ```bash
+   uv venv --seed --python 3.10
+   uv sync
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   ```
+
+## 📊 Data
+
+### 🎯 Pre-Generated Data (Recommended)
+
+Download our pre-processed data for quick evaluation:
+
 ```bash
 source .venv/bin/activate
 gdown --fuzzy https://drive.google.com/file/d/1qcr9ZqHptibJKHOwyOrjjbwQTjcsp_Vk/view
 tar -xzvf data.tgz
 ```
-### Videos
 
-Due to the redistribution policy, we cannot provide the videos directly. However, you can download the videos using the following instructions.
+### 🎬 Video Datasets
 
-1. Download the [MultiVENT](https://proceedings.neurips.cc/paper_files/paper/2023/file/a054ff49751dbc991ec30ae479397c3d-Paper-Datasets_and_Benchmarks.pdf) videos, and save them in the `data/MultiVENT/videos` directory.
-2. Download the [MSR-VTT](https://www.microsoft.com/en-us/research/publication/msr-vtt-a-large-video-description-dataset-for-bridging-video-and-language/) videos, and save them in the `data/MSR-VTT-1kA/videos` directory.
+> 📝 **Note**: Due to redistribution policies, videos must be downloaded separately.
 
-### Pre-Trained Models
+| Dataset | Download Instructions | Save Location |
+|---------|----------------------|---------------|
+| **MultiVENT** | [Download from NeurIPS](https://proceedings.neurips.cc/paper_files/paper/2023/file/a054ff49751dbc991ec30ae479397c3d-Paper-Datasets_and_Benchmarks.pdf) | `data/MultiVENT/videos/` |
+| **MSR-VTT** | [Download from Microsoft](https://www.microsoft.com/en-us/research/publication/msr-vtt-a-large-video-description-dataset-for-bridging-video-and-language/) | `data/MSR-VTT-1kA/videos/` |
+
+### 🤖 Pre-Trained Models
+
+#### MultiCLIP Model
 ```bash
 mkdir -p data/models/MultiCLIP
-wget -O data/models/MultiCLIP/open_clip_pytorch_model.bin https://huggingface.co/laion/CLIP-ViT-H-14-frozen-xlm-roberta-large-laion5B-s13B-b90k/resolve/main/open_clip_pytorch_model.bin
+wget -O data/models/MultiCLIP/open_clip_pytorch_model.bin \
+  https://huggingface.co/laion/CLIP-ViT-H-14-frozen-xlm-roberta-large-laion5B-s13B-b90k/resolve/main/open_clip_pytorch_model.bin
+```
 
+#### InternVideo2 Model
+```bash
 mkdir -p data/models/InternVideo2
-```
-Due to different licensing agreements, we cannot provide the InternVideo2 model directly. However, you can download the InternVideo2 model from [here](https://huggingface.co/OpenGVLab/InternVideo2-Stage2_1B-224p-f4) and save it as `data/models/InternVideo2/InternVideo2-stage2_1b-224p-f4.pt`.
-
-## Evaluation
-Data is generated and already populated in the `data` directory. To generate the data, follow the instructions in the [Data Generation](#data-generation) section.
-
-### Evaluating [MultiVENT](https://proceedings.neurips.cc/paper_files/paper/2023/file/a054ff49751dbc991ec30ae479397c3d-Paper-Datasets_and_Benchmarks.pdf)
-```bash
-bash scripts/eval_multivent.sh 
+# Download from: https://huggingface.co/OpenGVLab/InternVideo2-Stage2_1B-224p-f4
+# Save as: data/models/InternVideo2/InternVideo2-stage2_1b-224p-f4.pt
 ```
 
-### Evaluating [MSR-VTT-1kA](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/06/cvpr16.msr-vtt.tmei_-1.pdf)
+> ⚖️ **Licensing**: InternVideo2 model has different licensing terms and must be downloaded separately.
+
+## 🧪 Evaluation
+
+> 📋 **Prerequisites**: Ensure data is generated and populated in the `data` directory. See [Data Generation](#data-generation-scripts) for setup instructions.
+
+### 🎯 Quick Evaluation
+
+| Dataset | Command | Description |
+|---------|---------|-------------|
+| **MultiVENT** | `bash scripts/eval_multivent.sh` | [MultiVENT Dataset](https://proceedings.neurips.cc/paper_files/paper/2023/file/a054ff49751dbc991ec30ae479397c3d-Paper-Datasets_and_Benchmarks.pdf) evaluation |
+| **MSR-VTT-1kA** | `bash scripts/eval_msrvtt.sh` | [MSR-VTT-1kA Dataset](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/06/cvpr16.msr-vtt.tmei_-1.pdf) evaluation |
+
+### 🚀 Run Evaluation
+
 ```bash
+# MultiVENT Evaluation
+bash scripts/eval_multivent.sh
+
+# MSR-VTT-1kA Evaluation  
 bash scripts/eval_msrvtt.sh
 ```
 
-## Data Generation Scripts
-Data for MSR-VTT-1kA and MultiVENT datasets can be generated using the scripts below. The scripts will transcribe the audio, and generate the data for evaluation. Pre-generated data is available in the [Download Pre-Generated Data](#download-pre-generated-data) section.
+## 🔧 Data Generation Scripts
+
+> 💡 **Tip**: Pre-generated data is available in the [Pre-Generated Data](#pre-generated-data-recommended) section for quick evaluation.
+
+### 📋 Available Scripts
+
+| Dataset | Audio Transcription | Script | Description |
+|---------|:------------------:|--------|-------------|
+| **MultiVENT** | ✅ With ASR | [`generate_multivent_asr.sh`](scripts/generate_multivent_asr.sh) | Full pipeline with audio transcription |
+| **MultiVENT** | ❌ No ASR | [`generate_multivent_noasr.sh`](scripts/generate_multivent_noasr.sh) | Without audio transcription |
+| **MSR-VTT-1kA** | ✅ With ASR | [`generate_msrvtt_asr.sh`](scripts/generate_msrvtt_asr.sh) | Full pipeline with audio transcription |
+| **MSR-VTT-1kA** | ❌ No ASR | [`generate_msrvtt_noasr.sh`](scripts/generate_msrvtt_noasr.sh) | Without audio transcription |
+| **All Datasets** | 🔄 Grid Search | [`grid_search_data.py`](scripts/grid_search_data.py) | Comprehensive data generation |
+
+### 🚀 Usage
+
+```bash
+# Generate data for specific dataset
+bash scripts/generate_multivent_asr.sh    # MultiVENT with ASR
+bash scripts/generate_msrvtt_noasr.sh     # MSR-VTT-1kA without ASR
+
+# Or run grid search for all combinations
+python scripts/grid_search_data.py
+```
 
 
-|   Dataset   | Audio |            Script Location            |
-|:-----------:|:-----:|:-------------------------------------:|
-|  MultiVENT  |   ✓   |  [scripts/generate_multivent_asr.sh](scripts/generate_multivent_asr.sh)  |
-|  MultiVENT  |   -   | [scripts/generate_multivent_noasr.sh](scripts/generate_multivent_noasr.sh) |
-| MSR-VTT-1kA |   ✓   |    [scripts/generate_msrvtt_asr.sh](scripts/generate_msrvtt_asr.sh)   |
-| MSR-VTT-1kA |   -   |   [scripts/generate_msrvtt_noasr.sh](scripts/generate_msrvtt_noasr.sh)  |
-| ALL         |  ALL  |   [scripts/grid_search_data.py](scripts/grid_search_data.py)  |
+## 🎯 Use Your Own Data
 
+### 📁 Dataset Structure
 
-## Use Your Own Data
-If you want to generate data using your own dataset, i.e, `{DATA_DIR}`, follow the instructions below.
+Create your custom dataset with the following structure:
 
-1. Download all videos to `{DATA_DIR}/videos`
-2. Write a CSV file with the following columns: `query, video_id` and save it as `{DATA_DIR}/dataset.csv`
-3. Generate the data
+```
+{DATA_DIR}/
+├── videos/           # Your video files
+└── dataset.csv       # Query-video mapping
+```
+
+### 📝 Dataset Format
+
+Your `dataset.csv` should contain:
+- `query`: Text query for video retrieval
+- `video_id`: Corresponding video filename (without path)
+
+### 🚀 Generation Pipeline
 ```bash
 echo "Transcribing videos"
 python -m src.data.transcribe_audios \
@@ -170,9 +214,11 @@ python -m src.eval.InternVideo2.infer \
     --aggregation_methods=inv_entropy
 ```
 
-## Using Docker
-Many of us doesn't have root permission to the server, there comes the [udocker](https://github.com/indigo-dc/udocker) to the rescue.
-To use the code in a Docker container, follow the instructions below.
+## 🐳 Using Docker
+
+> 💡 **Perfect for**: Systems without root permissions or consistent environment setup.
+
+We recommend using [udocker](https://github.com/indigo-dc/udocker) for containerized execution.
 ```bash
 # Install udocker
 uv add udocker
@@ -191,9 +237,11 @@ uv venv --seed --python=3.10
 uv sync
 ```
 
-## Citation
-If you find this code useful for your research, please consider citing:
-```
+## 📚 Citation
+
+If you find this work useful for your research, please consider citing:
+
+```bibtex
 @article{dipta2025q2e,
   title={Q2E: Query-to-Event Decomposition for Zero-Shot Multilingual Text-to-Video Retrieval},
   author={Dipta, Shubhashis Roy and Ferraro, Francis},
@@ -201,3 +249,14 @@ If you find this code useful for your research, please consider citing:
   year={2025}
 }
 ```
+
+---
+
+<div align="center">
+
+**⭐ If you found this project helpful, please give it a star! ⭐**
+
+[![GitHub stars](https://img.shields.io/github/stars/dipta007/Q2E?style=social)](https://github.com/dipta007/Q2E)
+[![GitHub forks](https://img.shields.io/github/forks/dipta007/Q2E?style=social)](https://github.com/dipta007/Q2E)
+
+</div>
