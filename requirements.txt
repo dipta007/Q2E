@@ -98,7 +98,7 @@ llama-parse==0.6.0
 llvmlite==0.44.0
 lm-format-enforcer==0.10.9
 markupsafe==3.0.2
-marshmallow==3.26.1
+marshmallow==3.26.2
 matplotlib-inline==0.1.7
 mistral-common==1.5.3
 moviepy==2.1.2
