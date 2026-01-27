@@ -139,7 +139,7 @@ parso==0.8.4
 partial-json-parser==0.2.1.1.post5
 pexpect==4.9.0
 pillow==10.4.0
-pip==25.0.1
+pip==25.2
 platformdirs==4.3.6
 proglog==0.1.10
 prometheus-client==0.21.1
