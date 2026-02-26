@@ -75,7 +75,7 @@ jsonschema-specifications==2024.10.1
 jupyter-client==8.6.3
 jupyter-core==5.7.2
 langchain==0.3.18
-langchain-core==0.3.34
+langchain-core==1.2.11
 langchain-text-splitters==0.3.6
 langsmith==0.3.8
 lark==1.2.2
